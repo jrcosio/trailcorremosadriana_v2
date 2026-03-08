@@ -11,7 +11,7 @@ Sitio web oficial de la carrera **Trail Peñasagra Corremos por Adriana**, desar
 - Diego González
 - Mireite Alonso
 
-### Uno que pasba por ahí 
+### Uno que pasaba por el pueblo... 
 - José Ramón Blanco
 
 ---
