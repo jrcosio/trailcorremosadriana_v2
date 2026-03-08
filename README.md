@@ -2,6 +2,16 @@
 
 Sitio web oficial de la carrera **Trail Peñasagra Corremos por Adriana**, desarrollado con [Reflex](https://reflex.dev/) (Python) y gestionado con [uv](https://docs.astral.sh/uv/).
 
+
+![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Reflex](https://img.shields.io/badge/Reflex-Framework-8A2BE2?style=for-the-badge&logo=reflex&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![uv](https://img.shields.io/badge/uv-package%20manager-DE5FE9?style=for-the-badge&logo=astral&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-dev-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-prod-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)
+![Estado](https://img.shields.io/badge/Estado-En%20desarrollo-F59E0B?style=for-the-badge)
+
 ---
 ## Desarrolladores
 - Jose Luis Gutiérrez
