@@ -3,6 +3,18 @@
 Sitio web oficial de la carrera **Trail Peñasagra Corremos por Adriana**, desarrollado con [Reflex](https://reflex.dev/) (Python) y gestionado con [uv](https://docs.astral.sh/uv/).
 
 ---
+## Desarrolladores
+- Jose Luis Gutiérrez
+- Jose Alberto Lanza
+- Pablo Blanco
+- HUgo Cobo
+- Diego González
+- Mireite Alonso
+
+### Uno que pasba por ahí 
+- José Ramón Blanco
+
+---
 
 ## 🛠️ Stack tecnológico
 
