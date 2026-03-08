@@ -7,7 +7,7 @@ Sitio web oficial de la carrera **Trail Peñasagra Corremos por Adriana**, desar
 - Jose Luis Gutiérrez
 - Jose Alberto Lanza
 - Pablo Blanco
-- HUgo Cobo
+- Hugo Cobo
 - Diego González
 - Mireite Alonso
 
