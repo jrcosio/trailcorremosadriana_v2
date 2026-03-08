@@ -75,38 +75,6 @@ trailcorremosadriana_v2/
 ├── rxconfig.py                   # Configuración de Reflex
 └── README.md
 ```
-
----
-
-## 🗄️ Base de datos
-
-El proyecto usa **SQLAlchemy** a través de la integración nativa de Reflex. Los modelos se definen heredando de `rx.Model`:
-
-```python
-import reflex as rx
-
-class Inscripcion(rx.Model, table=True):
-    nombre: str
-    dorsal: int
-    categoria: str
-```
-
-Las migraciones se gestionan automáticamente con Reflex al ejecutar `reflex run`.
-
----
-
-## ⚙️ Variables de entorno
-
-Crea un archivo `.env` en la raíz del proyecto:
-
-```env
-# Base de datos (producción)
-DATABASE_URL=postgresql+psycopg2://usuario:password@host:5432/trailcorremosadriana
-
-# Entorno
-REFLEX_ENV=dev   # dev | prod
-```
-
 ---
 
 ## 🏗️ Despliegue en producción
