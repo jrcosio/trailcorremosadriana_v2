@@ -11,6 +11,7 @@ def index() -> rx.Component:
             #Componente principal de la página
             cabecera_index( 
                 "/cabecera_index.jpg",
+                #Contenido de la cabecera 
                 rx.vstack(
                     rx.heading("Trail Peñasagra", size="8", color="red"),
                     rx.text("Corremos por Adriana", color="red", font_size="1.5em"),
