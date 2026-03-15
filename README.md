@@ -84,19 +84,79 @@ La aplicación estará disponible en `http://localhost:3000`.
 
 ```
 trailcorremosadriana_v2/
-├── trailcorremosadriana_v2/      # Paquete principal de la app Reflex
+├── trailcorremosadriana_v2/                # Paquete principal de la app Reflex
 │   ├── __init__.py
-│   ├── trailcorremosadriana_v2.py  # Punto de entrada de la app
-│   ├── components/               # Componentes reutilizables
-│   ├── pages/                    # Páginas de la web
-│   ├── models/                   # Modelos SQLAlchemy
-│   └── state/                    # Estado global de Reflex
-├── assets/                       # Imágenes, fuentes y estáticos
-├── pyproject.toml                # Dependencias y configuración del proyecto
-├── uv.lock                       # Lockfile de uv
-├── rxconfig.py                   # Configuración de Reflex
+│   ├── trailcorremosadriana_v2.py          # Punto de entrada (registro de páginas)
+│   ├── components/                         # Componentes reutilizables
+│   │   ├── barra_navegacion.py             # Barra de navegación sticky
+│   │   └── cabecera.py                     # Cabecera hero con imagen de fondo
+│   ├── pages/                              # Páginas de la web
+│   │   ├── principal/
+│   │   │   └── principal.py               # Página de inicio (ruta /)
+│   │   └── galeria/
+│   │       └── galeria.py                 # Galería fotográfica (ruta /galeria) [WIP]
+│   ├── models/                             # Modelos SQLAlchemy (pendiente)
+│   └── state/                              # Estado global de Reflex (pendiente)
+├── assets/                                 # Imágenes, fuentes y estáticos
+│   └── cabecera_index.jpg                  # Imagen de fondo de la cabecera principal
+├── pyproject.toml                          # Dependencias y configuración del proyecto
+├── uv.lock                                 # Lockfile de uv
+├── rxconfig.py                             # Configuración de Reflex
 └── README.md
 ```
+
+---
+
+## 🧩 Componentes
+
+Bloques de UI reutilizables ubicados en `trailcorremosadriana_v2/components/`.
+
+### `barra_navegacion.py` — `barra_de_navegacion()`
+
+Barra de navegación superior fija que permanece visible durante el scroll.
+
+| Propiedad | Valor |
+|---|---|
+| Posición | `sticky`, `top: 0` |
+| Altura | `7vh` |
+| Fondo | verde |
+| Z-index | `100` (siempre por encima del contenido) |
+
+### `cabecera.py` — `cabecera(imagen, *children)`
+
+Componente de cabecera tipo *hero* que ocupa el 93% restante de la pantalla. Recibe una imagen de fondo y componentes hijos superpuestos sobre ella.
+
+| Parámetro | Descripción |
+|---|---|
+| `imagen` | Ruta a la imagen de fondo (ej. `"/cabecera_index.jpg"`) |
+| `*children` | Contenido superpuesto (titulares, botones, etc.) |
+
+| Propiedad | Valor |
+|---|---|
+| Altura | `93vh` |
+| Imagen | `background-size: cover`, centrada |
+
+---
+
+## 📄 Páginas
+
+Páginas de la web en `trailcorremosadriana_v2/pages/`, cada una en su propio subdirectorio.
+
+### `pages/principal/principal.py` — `index()`
+
+**Ruta:** `/`
+
+Página de inicio del sitio. Estructura:
+
+1. `barra_de_navegacion()` — barra sticky en la parte superior.
+2. `cabecera()` — hero a pantalla completa con la imagen `cabecera_index.jpg` y el título **"Trail Peñasagra"** / subtítulo **"Corremos por Adriana"** superpuestos.
+
+### `pages/galeria/galeria.py`
+
+**Ruta:** `/galeria` *(en desarrollo — asignado a Pablo)*
+
+Página destinada a mostrar la galería fotográfica del evento. Pendiente de implementación.
+
 ---
 
 ## 🏗️ Despliegue en producción

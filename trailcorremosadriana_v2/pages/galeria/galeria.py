@@ -1,0 +1,1 @@
+#Pablo aquí va el código de la página galería, que se muestra al hacer click en el enlace "Galería" de la barra de navegación.
