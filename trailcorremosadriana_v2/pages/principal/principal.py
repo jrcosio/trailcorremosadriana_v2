@@ -19,6 +19,7 @@ def index() -> rx.Component:
                     # justify="center",
                     height="100%",
                     width="100%",
+                    
                 )
             ),
 
