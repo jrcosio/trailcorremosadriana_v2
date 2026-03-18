@@ -31,6 +31,17 @@ def index() -> rx.Component:
                     
                 ),
             ),
+                rx.vstack(
+                    rx.heading("Trail Peñasagra", size="8", color="red"),
+                    rx.text("Corremos por Adriana", color="red", font_size="1.5em"),
+                    align="center",
+                    # justify="center",
+                    height="100%",
+                    width="100%",
+                    
+                )
+            ),
+
             # Resto del contenido de la página
             rx.text("cosas", padding="2em", size="6", text_align="center"),
             rx.text("cosas", padding="2em", size="6", text_align="center"),
