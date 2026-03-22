@@ -20,7 +20,7 @@ def tarjeta_galeria(titulo, texto_boton):
             height="250px",
             width="400px",
             position="relative",
-            border_radius="10px",
+            border_radius="0px",
             overflow="hidden",
         ),
         rx.button(texto_boton, color_scheme="red", border_radius = "0px"),
