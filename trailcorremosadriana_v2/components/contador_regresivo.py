@@ -53,36 +53,9 @@ class DateCountdownState(rx.State):
 
 def time_unit(value: str, label: str): 
     return rx.vstack(
-        rx.text(value, font_size="5em", font_weight="bold", font_family="Fjalla One", color="white"),
-        rx.text(label, font_size="1.5em", color="white"),
+        rx.text(value, font_weight="bold", color="white", font_size="4em", line_height="1"),
+        rx.text(label, color="white", font_size="1em", line_height="1"),
         align="center",
-        spacing="2",
+        spacing="0",
     )
 
-def index():
-    return rx.center(
-        rx.vstack(
-            rx.text("TRAIL SIERRA DE PEÑASAGRA", color="white", size="9", font_weight="bold"),
-            rx.text("Corremos por Adriana", color="white", size="9"),
-            rx.text("Ya solo faltan", size="8", font_weight="bold", color="white"),
-            rx.hstack(
-                time_unit(DateCountdownState.formatted_days, "Días"),
-                time_unit(DateCountdownState.formatted_hours, "Horas"),
-                time_unit(DateCountdownState.formatted_minutes, "Minutos"),
-                time_unit(DateCountdownState.formatted_seconds, "Segundos"),
-                spacing="9",
-                padding="3em",
-                ),
-                 ),
-        # --- CONFIGURACIÓN DEL FONDO ---
-        on_mount=DateCountdownState.start_clock, 
-        width="100%",
-        height="100vh",
-        background_image="url('/Peñasagra.png')",
-        background_size="cover",
-        background_position="center",
-        background_repeat="no-repeat",
-    )
-
-app = rx.App()
-app.add_page(index, on_load=DateCountdownState.start_clock)
