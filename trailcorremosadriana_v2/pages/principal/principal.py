@@ -14,27 +14,23 @@ def index() -> rx.Component:
             cabecera( 
                 "/cabecera_index.jpg",
                 #Contenido de la cabecera 
-                rx.vstack(
-                    rx.heading("Trail Peñasagra", size="8", color="red"),
-                    rx.text("Corremos por Adriana", color="red", font_size="1.5em"),
-                    align="center",
-                    # justify="center",
-                    height="100%",
-                    width="100%",
-                )
-            ),
-
-                rx.vstack(
-                    rx.heading("Trail Peñasagra", size="8", color="red"),
-                    rx.text("Corremos por Adriana", color="red", font_size="1.5em"),
-                    align="center",
-                    # justify="center",
-                    height="100%",
-                    width="100%",
+                rx.center(
+                    rx.vstack(
+                        rx.text("TRAIL SIERRA DE PEÑASAGRA", color="white", size="9", font_weight="bold",align="center"),
+                        rx.text("Corremos por Adriana", color="white", size="9", align="center"),
+                        rx.text("Ya solo faltan", size="8", font_weight="bold", color="white", align="center"),
+                        rx.hstack(
+                            time_unit(DateCountdownState.formatted_days, "Días"),
+                            time_unit(DateCountdownState.formatted_hours, "Horas"),
+                            time_unit(DateCountdownState.formatted_minutes, "Minutos"),
+                            time_unit(DateCountdownState.formatted_seconds, "Segundos"),
+                            # spacing="9",
+                            # padding="3em",
+                        ),
+                    ),
                     
-                )
+                ),
             ),
-
             # Resto del contenido de la página
             rx.text("cosas", padding="2em", size="6", text_align="center"),
             rx.text("cosas", padding="2em", size="6", text_align="center"),
