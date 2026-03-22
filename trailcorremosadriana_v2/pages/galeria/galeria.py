@@ -1,7 +1,7 @@
 #Pablo aquí va el código de la página galería, que se muestra al hacer click en el enlace "Galería" de la barra de navegación.
 import reflex as rx
 
-def tarjeta_galeria(titulo, texto_boton):
+def tarjeta_galeria(titulo, imagen_url,texto_boton):
     return rx.hstack(
         rx.box(
             rx.box(
@@ -14,7 +14,7 @@ def tarjeta_galeria(titulo, texto_boton):
                 right="15px",
                 border_radius="5px",
             ),
-            background_image=f"url('/correr_prueba.jpg')",
+            background_image=f"url('{imagen_url}')",
             background_size="cover",
             background_position="center",
             height="250px",
@@ -23,20 +23,19 @@ def tarjeta_galeria(titulo, texto_boton):
             border_radius="0px",
             overflow="hidden",
         ),
-        rx.button(texto_boton, color_scheme="red", border_radius = "0px"),
+        rx.box(width="500px"),
+        rx.button(texto_boton, color_scheme="red", border_radius = "0px", width="200px"),
         align="center",
         spacing="4",
     )
 
 def ver_galeria():
-    return rx.center(
-        rx.vstack(
-            tarjeta_galeria("Galería 2024", "Ver"),
-            tarjeta_galeria("Galería 2025", "Ver"),
-            tarjeta_galeria("Galería 2026", "Próximamente"),
-            spacing="6",
-            padding="20px",
-        )
+    return rx.vstack(
+        tarjeta_galeria("Galería 2024", "/correr_prueba.jpg", "V E R"),
+        tarjeta_galeria("Galería 2025", "/correr_prueba.jpg", "V E R"),
+        tarjeta_galeria("Galería 2026", "/correr_prueba.jpg", "P R Ó X I M A M E N T E"),
+        spacing="6",
+        padding="20px",
     )
 
 app = rx.App()
