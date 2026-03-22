@@ -64,8 +64,8 @@ def index():
         rx.vstack(
             rx.text("TRAIL SIERRA DE PEÑASAGRA", color="white", size="9", font_weight="bold"),
             rx.text("Corremos por Adriana", color="white", size="9"),
+            rx.text("Ya solo faltan", size="8", font_weight="bold", color="white"),
             rx.hstack(
-                rx.text("Solo faltan", size="8", font_weight="bold", color="white"),
                 time_unit(DateCountdownState.formatted_days, "Días"),
                 time_unit(DateCountdownState.formatted_hours, "Horas"),
                 time_unit(DateCountdownState.formatted_minutes, "Minutos"),
