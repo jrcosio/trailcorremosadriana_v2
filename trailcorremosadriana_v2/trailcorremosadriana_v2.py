@@ -6,6 +6,8 @@ from trailcorremosadriana_v2.pages.principal.principal import index
 
 
 
-app = rx.App()
+app = rx.App(
+    theme=rx.theme(appearance="light"),
+)
 app.add_page(index, route="/")
 # la de galeria, noticias, etc se añadirá más adelante

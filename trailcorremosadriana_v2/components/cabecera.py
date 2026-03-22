@@ -9,5 +9,5 @@ def cabecera(imagen: str, *children) -> rx.Component:
         background_position="center",
         background_repeat="no-repeat",
         width="100%",
-        height="93vh",
+        height="100dvh",
     )

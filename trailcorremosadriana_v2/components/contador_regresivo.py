@@ -53,8 +53,8 @@ class DateCountdownState(rx.State):
 
 def time_unit(value: str, label: str): 
     return rx.vstack(
-        rx.text(value, font_weight="bold", color="white", font_size="4em", line_height="1"),
-        rx.text(label, color="white", font_size="1em", line_height="1"),
+        rx.text(value, font_weight="bold", color="orange", font_size="4em", line_height="1"),
+        rx.text(label, color="orange", font_size="1em", line_height="1"),
         align="center",
         spacing="0",
     )

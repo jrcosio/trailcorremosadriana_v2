@@ -6,64 +6,62 @@ from trailcorremosadriana_v2.components.contador_regresivo import DateCountdownS
 
 
 
+
 def index() -> rx.Component:
     return rx.box(
         barra_de_navegacion(),
         rx.vstack(
             #Componente principal de la página
             cabecera( 
-                "/cabecera_index.jpg",
+                "/fondo.webp",
                 #Contenido de la cabecera 
                 rx.center(
                     rx.vstack(
-                        rx.text("TRAIL SIERRA DE PEÑASAGRA", color="white", size="9", font_weight="bold",align="center"),
-                        rx.text("Corremos por Adriana", color="white", size="9", align="center"),
-                        rx.text("Ya solo faltan", size="8", font_weight="bold", color="white", align="center"),
-                        rx.hstack(
-                            time_unit(DateCountdownState.formatted_days, "Días"),
-                            time_unit(DateCountdownState.formatted_hours, "Horas"),
-                            time_unit(DateCountdownState.formatted_minutes, "Minutos"),
-                            time_unit(DateCountdownState.formatted_seconds, "Segundos"),
-                            # spacing="9",
-                            # padding="3em",
+                        rx.text("TRAIL PEÑASAGRA", color="orange", font_size="7em", font_weight="bold",align="center"),
+                        rx.text("Corremos por Adriana", color="#FF90FB", font_size="3em", align="center"),
+                        rx.spacer(),
+                        rx.box(
+                            rx.text("Ya solo faltan", font_size="2em", color="orange", align="center"),
+                            rx.hstack(
+                                time_unit(DateCountdownState.formatted_days, "Días"),
+                                time_unit(DateCountdownState.formatted_hours, "Horas"),
+                                time_unit(DateCountdownState.formatted_minutes, "Minutos"),
+                                time_unit(DateCountdownState.formatted_seconds, "Segundos"),
+                                justify="center",
+                                spacing="8",
+                            ),
+                            background_color="#3333339D",
+                            border_radius="1em",
+                            padding="1.5em",
                         ),
+                        rx.spacer(),
+                        align="center",
                     ),
-                    
+                    width="100%",
+                    height="100%",
                 ),
             ),
             # Resto del contenido de la página
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            rx.text("cosas", padding="2em", size="6", text_align="center"),
-            
-            
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
+            rx.text("Corremos por Adriana!", size="6", font_weight="bold", align="center"),
             
             
             
@@ -72,5 +70,6 @@ def index() -> rx.Component:
             
         ),
         on_mount=DateCountdownState.start_clock,
+        background_color="#EBEBEB",
 
     )
