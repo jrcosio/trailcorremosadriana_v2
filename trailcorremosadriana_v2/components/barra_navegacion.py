@@ -9,17 +9,17 @@ def barra_de_navegacion() -> rx.Component:
             rx.spacer(),  # Espacio entre el logo y los enlaces de navegación
             #Boton para incripciones
             rx.link(
-                rx.button("Inscribete", color_scheme="orange", font_size="1.2em"),
+                rx.button("Inscribete", color_scheme="orange", font_size="2em"),
                 href="/inscripciones",
             ),
 
             rx.spacer(),
             rx.tablet_and_desktop(
                 rx.hstack(
-                    rx.link("Inicio", href="/", font_size="1.2em"),
-                    rx.link("Recorridos", href="/recorridos", font_size="1.2em"),
-                    rx.link("Galería", href="/galeria", font_size="1.2em"),
-                    rx.link("Contacto", href="/contacto", font_size="1.2em"),
+                    rx.link("Inicio", href="/", font_size="1.2em", color="black", _hover={"text_decoration": "underline"}),
+                    rx.link("Carreras", href="/recorridos", font_size="1.2em", color="black", _hover={"text_decoration": "underline"}),
+                    rx.link("Galería", href="/galeria", font_size="1.2em", color="black", _hover={"text_decoration": "underline"}),
+                    rx.link("Contacto", href="/contacto", font_size="1.2em", color="black", _hover={"text_decoration": "underline"}),
                     spacing="4",
                 ),
             ),
@@ -35,7 +35,7 @@ def barra_de_navegacion() -> rx.Component:
                         rx.menu.item(
                             rx.icon("map", color="black"),
                             rx.box(width="5px"),
-                            rx.link("Recorridos", href="/recorridos", font_size="1.2em"),
+                            rx.link("Carreras", href="/recorridos", font_size="1.2em"),
                         ),
                         rx.menu.item(
                             rx.icon("camera", color="black"),
