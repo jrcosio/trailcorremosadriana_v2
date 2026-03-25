@@ -31,7 +31,7 @@ def pie_pagina():
             ),
             rx.divider(border_color="#1E3A5F"),
             rx.hstack(
-                rx.text("Cosío © 2026 Asociación Peñasagra", color="#64748B", font_size="14px"),
+                rx.text("Cosío © 2026 Asociación Peñasagra | Hackers Cosío [José, Lanza, Pablo, Hugo, Diego y Mireite]", color="#64748B", font_size="14px"),
                 rx.spacer(),
                 rx.link("email", href="mailto:asociacionpenasagra@gmail.com", color="#94A3B8"),
                 width="100%",
