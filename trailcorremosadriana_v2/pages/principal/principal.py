@@ -20,20 +20,11 @@ def index() -> rx.Component:
                 "/fondos/fondo.webp",
                 rx.center(
                     rx.vstack(
-                        rx.image(src="/logos/logo_aso.png",height="150px"),
-                        rx.text("TRAIL PEÑASAGRA",
-                            color="orange",
-                            font_size=rx.breakpoints(initial="3.5em", sm="5em", lg="8em"),
-                            font_weight="bold",
-                            align="center",
-                        ),
-                        rx.text("Corremos por Adriana",
-                            color="#FF90FB",
-                            font_size=rx.breakpoints(initial="2em", sm="3em", lg="4em"),
-                            font_weight="bold",
-                            align="center",
-                        ),
-                        # rx.spacer(),
+
+                        rx.box(height="60px"),
+                        rx.image(src="/logos/nombre_desktop.webp", height=rx.breakpoints(initial="70px", sm="100px", lg="150px")),
+                        rx.image(src="/logos/corremos_por_adriana.webp", height=rx.breakpoints(initial="60px", sm="90px", lg="120px")),
+                       
                         rx.box(
                             rx.text(
                                 "Ya solo faltan",
@@ -71,10 +62,10 @@ def index() -> rx.Component:
             ),
             # Resto del contenido de la página
             inscripciones(),
-            noticias(),
+            # noticias(),
             patrocinadores(),
             # voluntarios(),
-            colaboradores(),
+            # colaboradores(),
 
             pie_pagina(),
             spacing="0",

@@ -29,9 +29,11 @@ def inscripciones() -> rx.Component:
                 text_align="center",
             ),
             rx.grid(
-                card(imagen="/img/trail_inscripciones.png", titulo="Trail Peñasagra - 28 Km", descripcion="28 Km por los senderos más exigentes de la Sierra. Un reto para los que buscan superarse entre montañas."),
-                card(imagen="/img/trail_inscripciones.png", titulo="Speed Trail Peñasagra - 15 Km", descripcion="15 Km de ritmo intenso y paisajes inolvidables. La distancia perfecta para disfrutar y competir."),
-                card(imagen="/img/trail_inscripciones.png", titulo="Familiar Peñasagra - 8 Km", descripcion="8 Km para compartir en familia. Una jornada pensada para que pequeños y mayores disfruten juntos de la naturaleza."),
+                card(imagen="/img/trail_inscripciones.webp", titulo="Trail Peñasagra - 27 Km", descripcion="28 Km por los senderos más exigentes de la Sierra. Un reto para los que buscan superarse entre montañas."),
+                card(imagen="/img/speed_trail_inscripciones.webp", titulo="Speed Trail Peñasagra - 14 Km", descripcion="15 Km de ritmo intenso y paisajes inolvidables. La distancia perfecta para disfrutar y competir."),
+                card(imagen="/img/familiar_trail_inscripciones.webp", titulo="Familiar Peñasagra - 7 Km", descripcion="8 Km para compartir en familia. Una jornada pensada para que pequeños y mayores disfruten juntos de la naturaleza."),
+                card(imagen="/img/familiar_menor_12.webp", titulo="Familiar Peñasagra Menores de 8 a 12 años - 7 Km", descripcion="Una carrera pensada especialmente para las familias, con un recorrido seguro y divertido para que disfruten de la naturaleza en familia."),
+                card(imagen="/img/familiar_menor_8.webp", titulo="Familiar Peñasagra Menores de 8 años - 7 Km", descripcion="Una carrera pensada especialmente para los más pequeños de 8 años, con un recorrido seguro y divertido de 7 kilómetros."),
                 
                 columns=rx.breakpoints(initial="1", sm="3", lg="3"),
                 spacing="5",

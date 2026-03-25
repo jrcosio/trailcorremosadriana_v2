@@ -12,16 +12,13 @@ def card(imagen: str) -> rx.Component:
 listado_patrocinadores = [
     "/logos/patrocinadores/banner_carandia.png",
     "/logos/patrocinadores/banner_jvcosio.png",
-    "/logos/patrocinadores/banner_carandia.png",
-    "/logos/patrocinadores/banner_jvcosio.png",
-    "/logos/patrocinadores/banner_carandia.png",
-    "/logos/patrocinadores/banner_jvcosio.png",
-    "/logos/patrocinadores/banner_carandia.png",
-    "/logos/patrocinadores/banner_jvcosio.png",
-    "/logos/patrocinadores/banner_carandia.png",
-    "/logos/patrocinadores/banner_jvcosio.png",
-    "/logos/patrocinadores/banner_carandia.png",
-    "/logos/patrocinadores/banner_jvcosio.png",
+    "/logos/patrocinadores/banner_andros.png",
+    "/logos/patrocinadores/banner_aljomar.png",
+    "/logos/patrocinadores/banner_artipublic.png",
+    "/logos/patrocinadores/banner_grupochovi.png",
+    "/logos/patrocinadores/banner_natuber.png",
+    "/logos/patrocinadores/banner_rionansa.png",
+
 ]
 
     
