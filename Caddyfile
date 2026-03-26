@@ -1,0 +1,21 @@
+trailpeñasagra.com {
+    handle /_event/* {
+        reverse_proxy app:8000
+    }
+
+    handle /ping {
+        reverse_proxy app:8000
+    }
+
+    handle /_upload/* {
+        reverse_proxy app:8000
+    }
+
+    handle {
+        reverse_proxy app:3000
+    }
+}
+
+www.trailpeñasagra.com {
+    redir https://trailpeñasagra.com{uri} permanent
+}

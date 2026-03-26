@@ -1,13 +1,29 @@
-# Docker Compose sencillo para Reflex
-
 services:
   app:
-    build: .
-    ports:
-      - "80:3000"     # Frontend (accedes con localhost)
-      - "8000:8000"   # Backend
-    volumes:
-      - trailcorremosadriana_v2:/app/.reflex  # Persistir datos
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
+    expose:
+      - "3000"
+      - "8000"
+    volumes:
+      - trailcorremosadriana_v2:/app/.reflex
+
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
 volumes:
   trailcorremosadriana_v2:
+  caddy_data:
+  caddy_config:
