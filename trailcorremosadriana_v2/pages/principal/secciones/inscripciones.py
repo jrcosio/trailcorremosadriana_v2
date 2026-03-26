@@ -51,27 +51,13 @@ def inscripciones() -> rx.Component:
                 ),
                                 
                 card(
-                    imagen="/img/familiar_menor_12.webp",
-                    titulo="Familiar Peñasagra Menores de 8 a 12 años - 7 Km",
-                    descripcion="Una carrera pensada especialmente para las familias, con un recorrido seguro y divertido para que disfruten de la naturaleza en familia.",
-                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/familiar-sierra-de-penasagra-menores-de-8-a-12-anos--7-km")
-                ),
-                
-                card(
-                    imagen="/img/familiar_menor_8.webp", 
-                    titulo="Familiar Peñasagra Menores de 8 años - 7 Km", 
-                    descripcion="Una carrera pensada especialmente para los más pequeños de 8 años, con un recorrido seguro y divertido de 7 kilómetros.",
-                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/familiar-sierra-de-penasagra-menores-de-8-anos--7-km")
-                ),
-                
-                card(
                     imagen="/img/dorsal_solidario.webp",
                     titulo="Dorsal Solidario",
                     descripcion="Participa con el Dorsal Solidario, una opción para aquellos que quieran apoyar la causa sin correr. Con tu aportación",
                     on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--dorsal-solidario")
                 ),
                 
-                columns=rx.breakpoints(initial="1", sm="3", lg="3"),
+                columns=rx.breakpoints(initial="1", sm="2", lg="4"),
                 spacing="5",
                 width=rx.breakpoints(initial="100%", sm="90%", lg="70%"),
                 padding="20px",
