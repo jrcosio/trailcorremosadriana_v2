@@ -9,7 +9,7 @@ def barra_de_navegacion() -> rx.Component:
             rx.spacer(),  # Espacio entre el logo y los enlaces de navegación
             #Boton para incripciones
             rx.link(
-                rx.button("Inscribete", color_scheme="orange", font_size="2em"),
+                rx.button("Inscríbete", color_scheme="orange", font_size="2em"),
                 href="https://www.gedsports.com/race/trail-sierra-de-penasagra",
                 is_external=True,
             ),

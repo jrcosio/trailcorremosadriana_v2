@@ -8,7 +8,7 @@ def card(imagen: str, titulo: str, subtitulo: str, descripcion: str, on_click: c
         rx.heading(titulo, size="5", color="orange", width="100%", text_align="center", margin_top="3"),
         rx.text(subtitulo, size="3", color="orange", width="100%", text_align="center", margin_top="1"),
         rx.box(height="4px"),
-        rx.button("Inscribirme", color_scheme="green", margin_top="3", width="100%", size="3", on_click=on_click),
+        # rx.button("Inscribirme", color_scheme="green", margin_top="3", width="100%", size="3", on_click=on_click),
         rx.box(height="4px"),
         rx.text(descripcion, margin_top="1"),
        
