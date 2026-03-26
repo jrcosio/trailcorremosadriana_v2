@@ -1,0 +1,13 @@
+# Docker Compose sencillo para Reflex
+
+services:
+  app:
+    build: .
+    ports:
+      - "80:3000"     # Frontend (accedes con localhost)
+      - "8000:8000"   # Backend
+    volumes:
+      - trailcorremosadriana_v2:/app/.reflex  # Persistir datos
+    restart: unless-stopped
+volumes:
+  trailcorremosadriana_v2:
