@@ -10,7 +10,8 @@ def barra_de_navegacion() -> rx.Component:
             #Boton para incripciones
             rx.link(
                 rx.button("Inscribete", color_scheme="orange", font_size="2em"),
-                href=rx.redirect("https://www.gedsports.com/race/trail-sierra-de-penasagra"),
+                href="https://www.gedsports.com/race/trail-sierra-de-penasagra",
+                is_external=True,
             ),
 
             rx.spacer(),

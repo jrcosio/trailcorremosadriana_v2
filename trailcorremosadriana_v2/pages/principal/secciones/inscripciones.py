@@ -2,10 +2,11 @@ import reflex as rx
 
 
 
-def card(imagen: str, titulo: str, descripcion: str, on_click: callable) -> rx.Component:
+def card(imagen: str, titulo: str, subtitulo: str, descripcion: str, on_click: callable) -> rx.Component:
     return rx.card(
         rx.image(src=imagen, width="100%", border_radius="5px"),
         rx.heading(titulo, size="5", color="orange", width="100%", text_align="center", margin_top="3"),
+        rx.text(subtitulo, size="3", color="orange", width="100%", text_align="center", margin_top="1"),
         rx.box(height="4px"),
         rx.button("Inscribirme", color_scheme="green", margin_top="3", width="100%", size="3", on_click=on_click),
         rx.box(height="4px"),
@@ -31,28 +32,32 @@ def inscripciones() -> rx.Component:
             rx.grid(
                 card(
                     imagen="/img/trail_inscripciones.webp",
-                    titulo="Trail Peñasagra - 27 Km", 
-                    descripcion="28 Km por los senderos más exigentes de la Sierra. Un reto para los que buscan superarse entre montañas.",
+                    titulo="Trail Peñasagra", 
+                    subtitulo="27 Km",
+                    descripcion="27 Km por los senderos más exigentes de la Sierra. Un reto para los que buscan superarse entre montañas.",
                     on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--27-km")
                 ),
                 
                 card(
                     imagen="/img/speed_trail_inscripciones.webp", 
-                    titulo="Speed Trail Peñasagra - 14 Km", 
-                    descripcion="15 Km de ritmo intenso y paisajes inolvidables. La distancia perfecta para disfrutar y competir.", 
+                    titulo="Speed Trail Peñasagra", 
+                    subtitulo="14 Km",
+                    descripcion="14 Km de ritmo intenso y paisajes inolvidables. La distancia perfecta para disfrutar y competir.", 
                     on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/speed-trail-sierra-de-penasagra--14-km")
                 ),
                 
                 card(
                     imagen="/img/familiar_trail_inscripciones.webp", 
-                    titulo="Familiar Peñasagra - 7 Km", 
-                    descripcion="8 Km para compartir en familia. Una jornada pensada para que pequeños y mayores disfruten juntos de la naturaleza.",
+                    titulo="Familiar Peñasagra", 
+                    subtitulo="7 Km",
+                    descripcion="7 Km para compartir en familia. Una jornada pensada para que pequeños y mayores disfruten juntos de la naturaleza.",
                     on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/familiar-sierra-de-penasagra--7-km")
                 ),
                                 
                 card(
                     imagen="/img/dorsal_solidario.webp",
                     titulo="Dorsal Solidario",
+                    subtitulo="Apoya sin correr",
                     descripcion="Participa con el Dorsal Solidario, una opción para aquellos que quieran apoyar la causa sin correr. Con tu aportación",
                     on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--dorsal-solidario")
                 ),
