@@ -4,18 +4,18 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    container_name: app
-    hostname: app
     expose:
       - "3000"
       - "8000"
     volumes:
       - trailcorremosadriana_v2:/app/.reflex
+    networks:
+      webnet:
+        ipv4_address: 172.20.0.10
 
   caddy:
     image: caddy:latest
     restart: unless-stopped
-    container_name: caddy
     ports:
       - "80:80"
       - "443:443"
@@ -25,10 +25,17 @@ services:
       - caddy_config:/config
     depends_on:
       - app
-    dns:
-      - 127.0.0.11
+    networks:
+      webnet:
+        ipv4_address: 172.20.0.11
 
 volumes:
   trailcorremosadriana_v2:
   caddy_data:
   caddy_config:
+
+networks:
+  webnet:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

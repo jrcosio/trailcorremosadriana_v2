@@ -1,18 +1,18 @@
 trailpeñasagra.com {
     handle /_event/* {
-        reverse_proxy 172.18.0.2:8000
+        reverse_proxy 172.20.0.10:8000
     }
 
     handle /ping {
-        reverse_proxy 172.18.0.2:8000
+        reverse_proxy 172.20.0.10:8000
     }
 
     handle /_upload/* {
-        reverse_proxy 172.18.0.2:8000
+        reverse_proxy 172.20.0.10:8000
     }
 
     handle {
-        reverse_proxy 172.18.0.2:3000
+        reverse_proxy 172.20.0.10:3000
     }
 }
 
