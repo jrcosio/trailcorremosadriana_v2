@@ -3,7 +3,7 @@ import reflex as rx
 def card(imagen: str, titulo: str, descripcion: str) -> rx.Component:
     return rx.card(
         rx.image(src=imagen, border_radius="5px"),
-        rx.heading(titulo, size="5", color="orange", width="100%", text_align="center", margin_top="3"),
+        rx.heading(titulo, size="5", color="#000000", width="100%", text_align="center", margin_top="3"),
         padding="4",
         background_color="#000000",
         border_radius="md",
