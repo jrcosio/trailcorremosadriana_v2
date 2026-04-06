@@ -3,6 +3,7 @@ from trailcorremosadriana_v2.components.barra_navegacion import barra_de_navegac
 from trailcorremosadriana_v2.components.cabecera import cabecera
 from trailcorremosadriana_v2.components.contador_regresivo import _countdown_script, _time_unit
 from trailcorremosadriana_v2.components.pie_pagina import pie_pagina
+from trailcorremosadriana_v2.pages.principal.secciones.camiseta import camiseta
 from trailcorremosadriana_v2.pages.principal.secciones.colaboradores import colaboradores
 from trailcorremosadriana_v2.pages.principal.secciones.inscripciones import inscripciones
 from trailcorremosadriana_v2.pages.principal.secciones.noticias import noticias
@@ -63,6 +64,7 @@ def index() -> rx.Component:
             # Resto del contenido de la página
             inscripciones(),
             # noticias(),
+            camiseta(),
             patrocinadores(),
             # voluntarios(),
             # colaboradores(),

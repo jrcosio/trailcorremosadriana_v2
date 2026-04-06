@@ -8,12 +8,12 @@ def card(imagen: str, titulo: str, subtitulo: str, descripcion: str, on_click: c
         rx.heading(titulo, size="5", color="orange", width="100%", text_align="center", margin_top="3"),
         rx.text(subtitulo, size="3", color="orange", width="100%", text_align="center", margin_top="1"),
         rx.box(height="4px"),
-        # rx.button("Inscribirme", color_scheme="green", margin_top="3", width="100%", size="3", on_click=on_click),
+        rx.button("Inscribirme", color_scheme="green", margin_top="3", width="100%", size="3", on_click=on_click),
         rx.box(height="4px"),
         rx.text(descripcion, margin_top="1"),
        
         padding="4",
-        background_color="#3333339D",
+        background_color="#000000FF",
         border_radius="md",
         box_shadow="md"
     )
@@ -43,7 +43,7 @@ def inscripciones() -> rx.Component:
                     titulo="Speed Trail Peñasagra", 
                     subtitulo="14 Km",
                     descripcion="14 Km de ritmo intenso y paisajes inolvidables. La distancia perfecta para disfrutar y competir.", 
-                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/speed-trail-sierra-de-penasagra--14-km")
+                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--14-km")
                 ),
                 
                 card(
@@ -51,7 +51,7 @@ def inscripciones() -> rx.Component:
                     titulo="Familiar Peñasagra", 
                     subtitulo="7 Km",
                     descripcion="7 Km para compartir en familia. Una jornada pensada para que pequeños y mayores disfruten juntos de la naturaleza.",
-                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/familiar-sierra-de-penasagra--7-km")
+                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--menores-de-8-anos")
                 ),
                                 
                 card(

@@ -25,6 +25,7 @@ def noticias() -> rx.Component:
                 color="#FFFFFF",
                 text_align="center",
             ),
+            
             align="center",
             padding="2em",
         ),
