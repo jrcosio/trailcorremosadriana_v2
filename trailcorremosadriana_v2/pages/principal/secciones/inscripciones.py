@@ -13,7 +13,7 @@ def card(imagen: str, titulo: str, subtitulo: str, descripcion: str, on_click: c
         rx.text(descripcion, margin_top="1"),
        
         padding="4",
-        background_color="#000000FF",
+        background_color="#000000",
         border_radius="md",
         box_shadow="md"
     )

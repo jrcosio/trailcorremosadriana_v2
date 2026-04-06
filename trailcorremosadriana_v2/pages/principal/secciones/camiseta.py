@@ -5,7 +5,7 @@ def card(imagen: str, titulo: str, descripcion: str) -> rx.Component:
         rx.image(src=imagen, border_radius="5px"),
         rx.heading(titulo, size="5", color="orange", width="100%", text_align="center", margin_top="3"),
         padding="4",
-        background_color="black",
+        background_color="#000000",
         border_radius="md",
         box_shadow="md",
         max_width="400px",
