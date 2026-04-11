@@ -1,7 +1,3 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
 Official website for the "Trail Sierra de Peñasagra - Corremos por Adriana" race event. Built with [Reflex](https://reflex.dev/), a Python framework that compiles Python code into a React frontend with a FastAPI backend.
@@ -32,21 +28,29 @@ Reflex apps use a **component/state/page** pattern where Python functions return
 
 - [rxconfig.py](rxconfig.py) — Reflex config: app name, plugins (Sitemap, TailwindV4)
 - [trailcorremosadriana_v2/trailcorremosadriana_v2.py](trailcorremosadriana_v2/trailcorremosadriana_v2.py) — App entry point: registers pages, creates the `app` instance
-- [trailcorremosadriana_v2/pages/principal/principal.py](trailcorremosadriana_v2/pages/principal/principal.py) — Home page (`/`)
-- [trailcorremosadriana_v2/pages/galeria/galeria.py](trailcorremosadriana_v2/pages/galeria/galeria.py) — Gallery page (`/galeria`), currently a placeholder
+
+### Pages
+
+Routes are registered in [trailcorremosadriana_v2.py](trailcorremosadriana_v2/trailcorremosadriana_v2.py):
+
+- [pages/principal/principal.py](trailcorremosadriana_v2/pages/principal/principal.py) — Home (`/`). Composes hero + sections from [pages/principal/secciones/](trailcorremosadriana_v2/pages/principal/secciones/): `inscripciones`, `camiseta`, `patrocinadores` are active; `noticias`, `voluntarios`, `colaboradores` are scaffolded but commented out.
+- [pages/contacto/contacto.py](trailcorremosadriana_v2/pages/contacto/contacto.py) — Contact form (`/contacto`), backed by [contacto_state.py](trailcorremosadriana_v2/pages/contacto/contacto_state.py). Sends mail via `smtplib` (Gmail SMTP over SSL); credentials from env vars `SENDER_EMAIL`, `SENDER_PASSWORD`, `RECEIVER_EMAIL`.
+- [pages/recorridos/recorridos.py](trailcorremosadriana_v2/pages/recorridos/recorridos.py) — Race routes page (`/recorridos`).
+- [pages/galeria/galeria.py](trailcorremosadriana_v2/pages/galeria/galeria.py) — Gallery (`/galeria`), placeholder.
 
 ### Components
 
-All reusable UI is in [trailcorremosadriana_v2/components/](trailcorremosadriana_v2/components/):
+Reusable UI in [trailcorremosadriana_v2/components/](trailcorremosadriana_v2/components/):
 
 - `barra_navegacion.py` — Sticky top nav bar (7vh, green background)
 - `cabecera.py` — Full-screen hero section (93vh, background image overlay)
-- `contador_regresivo.py` — Live countdown to race date (July 11, 2026), uses a Reflex `State` class with an async `tick()` event handler
+- `contador_regresivo.py` — Live countdown to race date (July 11, 2026). Exposes `_countdown_script()` (injects client-side JS) and `_time_unit(id, label)` helpers, consumed directly by the home page rather than as a single wrapper component.
+- `pie_pagina.py` — Footer with links, legal section, and contact email.
 
 ### State and Models
 
-- [trailcorremosadriana_v2/state/](trailcorremosadriana_v2/state/) — Global state (empty, pending)
-- [trailcorremosadriana_v2/models/](trailcorremosadriana_v2/models/) — SQLAlchemy models (empty, pending)
+- [trailcorremosadriana_v2/state/](trailcorremosadriana_v2/state/) — Global state (empty, pending). Page-scoped state lives alongside its page (e.g. `contacto_state.py`).
+- [trailcorremosadriana_v2/models/](trailcorremosadriana_v2/models/) — SQLAlchemy models (empty, pending).
 
 ### Assets
 
