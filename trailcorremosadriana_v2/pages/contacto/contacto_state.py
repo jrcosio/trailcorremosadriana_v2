@@ -15,6 +15,7 @@ class ContactoState(rx.State):
     
     # 2. Variables de control de UI
     is_sending: bool = False
+    submitted: bool = False
     feedback_message: str = ""
     
     # 3. Setters para actualizar el estado desde los inputs
@@ -33,6 +34,15 @@ class ContactoState(rx.State):
     @rx.event
     def set_description(self, value: str):
         self.description = value
+
+    @rx.event
+    def reset_form(self):
+        self.name = ""
+        self.email = ""
+        self.subject = ""
+        self.description = ""
+        self.submitted = False
+        self.feedback_message = ""
     
     # 4. Método para manejar el envío del formulario
     def send_email(self):
@@ -79,8 +89,8 @@ class ContactoState(rx.State):
                 smtp.login(sender_email, sender_password)
                 smtp.send_message(msg)
 
-            # Si todo sale bien, damos feedback y limpiamos el formulario
-            self.feedback_message = "¡Mensaje enviado con éxito! Te contactaremos pronto."
+            # Si todo sale bien, marcamos como enviado
+            self.submitted = True
             self.name = ""
             self.email = ""
             self.subject = ""

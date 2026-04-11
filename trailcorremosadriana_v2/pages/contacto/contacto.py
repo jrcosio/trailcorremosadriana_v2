@@ -86,6 +86,46 @@ def _info_contacto() -> rx.Component:
         width="100%",
         padding=rx.breakpoints(initial="2em", lg="3em"),
     )
+def _mensaje_gracias() -> rx.Component:
+    """Mensaje de agradecimiento tras envío exitoso."""
+    return rx.vstack(
+        rx.icon("circle-check", color="#30a46c", size=64),
+        rx.text(
+            "¡MENSAJE ENVIADO!",
+            font_size="2em",
+            color="orange",
+            font_weight="bold",
+            text_align="center",
+        ),
+        rx.divider(
+            border_color="#30a46c",
+            width="100px",
+            border_width="2px",
+        ),
+        rx.text(
+            "Gracias por contactarnos. Responderemos lo antes posible.",
+            color="#CBD5E1",
+            font_size="1.1em",
+            text_align="center",
+            line_height="1.8",
+        ),
+        rx.button(
+            "Enviar otro mensaje",
+            on_click=ContactoState.reset_form,
+            color_scheme="orange",
+            size="3",
+            cursor="pointer",
+            _hover={"opacity": "0.9"},
+        ),
+        spacing="5",
+        width="100%",
+        align="center",
+        justify="center",
+        padding=rx.breakpoints(initial="2em", lg="3em"),
+        min_height="400px",
+    )
+
+
 def _formulario_contacto() -> rx.Component:
     """Columna derecha: formulario de contacto."""
     input_style = {
@@ -100,7 +140,7 @@ def _formulario_contacto() -> rx.Component:
         "_focus": {"border_color": "orange", "box_shadow": "0 0 0 1px orange"},
     }
 
-    return rx.vstack(
+    formulario = rx.vstack(
         rx.text(
             "ENVÍANOS UN MENSAJE",
             font_size="2em",
@@ -111,6 +151,15 @@ def _formulario_contacto() -> rx.Component:
             border_color="#30a46c",
             width="100px",
             border_width="2px",
+        ),
+        rx.cond(
+            ContactoState.feedback_message,
+            rx.callout(
+                ContactoState.feedback_message,
+                icon="triangle_alert",
+                color_scheme="red",
+                width="100%",
+            ),
         ),
         rx.vstack(
             rx.input(placeholder="Tu nombre", 
@@ -161,6 +210,12 @@ def _formulario_contacto() -> rx.Component:
         spacing="5",
         width="100%",
         padding=rx.breakpoints(initial="2em", lg="3em"),
+    )
+
+    return rx.cond(
+        ContactoState.submitted,
+        _mensaje_gracias(),
+        formulario,
     )
 
 def contacto() -> rx.Component:
