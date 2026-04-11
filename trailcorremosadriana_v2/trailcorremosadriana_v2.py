@@ -12,7 +12,7 @@ app = rx.App(
     theme=rx.theme(appearance="light"),
 )
 app.add_page(index, route="/")
-app.add_page(contacto, route="/contacto")
+app.add_page(contacto, route="/contacto") #<-- está aquí
 app.add_page(recorridos, route="/recorridos")
 app.add_page(galeria, route="/galeria")
 
