@@ -6,7 +6,7 @@ from trailcorremosadriana_v2.components.pie_pagina import pie_pagina
 
 # ── Diccionario de álbumes (añade nuevos años aquí) ──
 ALBUMES = {
-    #"2024": "https://photos.app.goo.gl/cdfdsfwerwewfg",
+    "2024": "https://photos.app.goo.gl/NvoukMiSsSCHmijw9",
     "2025": "https://photos.app.goo.gl/cubEC9ev2Y9N5LAYA",
 
 }
