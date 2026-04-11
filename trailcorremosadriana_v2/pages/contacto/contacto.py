@@ -3,6 +3,7 @@ from .contacto_state import ContactoState
 from trailcorremosadriana_v2.components.barra_navegacion import barra_de_navegacion
 from trailcorremosadriana_v2.components.pie_pagina import pie_pagina
 
+
 def _info_contacto() -> rx.Component:
     """Columna izquierda: datos de contacto."""
     return rx.vstack(

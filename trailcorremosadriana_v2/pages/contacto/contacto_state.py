@@ -3,6 +3,7 @@ import smtplib
 from email.message import EmailMessage
 import os
 
+
 class ContactoState(rx.State):
     # 1. Variables de estado (conectadas a los inputs del formulario)
     name: str = ""
