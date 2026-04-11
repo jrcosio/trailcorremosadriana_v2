@@ -1,5 +1,4 @@
 import reflex as rx
-
 from trailcorremosadriana_v2.components.barra_navegacion import barra_de_navegacion
 from trailcorremosadriana_v2.components.pie_pagina import pie_pagina
 
