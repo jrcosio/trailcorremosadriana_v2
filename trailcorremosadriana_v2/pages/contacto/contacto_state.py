@@ -2,6 +2,8 @@ import reflex as rx
 import smtplib
 from email.message import EmailMessage
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 class ContactoState(rx.State):
