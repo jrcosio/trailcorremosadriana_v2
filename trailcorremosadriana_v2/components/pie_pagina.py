@@ -18,7 +18,7 @@ def pie_pagina():
                 rx.spacer(),
                 rx.vstack(
                     rx.text("ENLACES", color="white", font_weight="bold"),
-                    rx.link("Instagram", href="#", color="#94A3B8"),
+                    rx.link("Instagram", href="https://www.instagram.com/asociacion_penasagra/", color="#94A3B8"),
                     align_items="start",
                 ),
                 rx.spacer(),
