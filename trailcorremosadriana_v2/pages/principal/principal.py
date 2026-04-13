@@ -45,6 +45,7 @@ def index() -> rx.Component:
                             ),
                             background_color="#3333339D",
                             border_radius="1em",
+                            border="2px solid orange",
                             padding="1.5em",
                         ),
                         rx.text(
