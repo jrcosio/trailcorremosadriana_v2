@@ -51,7 +51,7 @@ def barra_de_navegacion() -> rx.Component:
             ),
             # Botón para inscripciones centrado respecto a la ventana
             rx.link(
-                rx.button("Inscríbete", color_scheme="orange", font_size="2em", border_radius="25px", border="1px solid white", size="3"),
+                rx.button("Inscríbete", color_scheme="orange", font_size="2em", border_radius="25px", border="2px solid white", size="3"),
                 href="https://www.gedsports.com/race/trail-sierra-de-penasagra",
                 is_external=True,
                 position="absolute",
