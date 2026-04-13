@@ -136,7 +136,7 @@ def _formulario_contacto() -> rx.Component:
         "color": "white",
         "border_radius": "8px",
         "font_size": "1em",
-        "_placeholder": {"color": "#94A3B8"},
+        "_placeholder": {"color": "#BDBDBD"},
         "_focus": {"border_color": "orange", "box_shadow": "0 0 0 1px orange"},
     }
 
