@@ -23,7 +23,13 @@ def index() -> rx.Component:
                     rx.vstack(
 
                         rx.box(height="60px"),
-                        rx.image(src="/logos/nombre_desktop.webp", height=rx.breakpoints(initial="70px", sm="100px", lg="150px")),
+                        rx.tablet_and_desktop(
+                            rx.image(src="/logos/nombre_desktop.webp", height=rx.breakpoints(initial="70px", sm="100px", lg="150px")),
+                        ),
+                        rx.mobile_only(
+                            rx.image(src="/logos/nombre_mobile.webp", height="150px"),
+
+                        ),
                         rx.image(src="/logos/corremos_por_adriana.webp", height=rx.breakpoints(initial="60px", sm="90px", lg="120px")),
                        
                         rx.box(
