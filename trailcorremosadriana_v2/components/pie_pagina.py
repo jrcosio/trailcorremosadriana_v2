@@ -12,6 +12,11 @@ def pie_pagina():
                         color="#94A3B8",
                         font_size="21px"
                     ),
+                    rx.text(
+                        "Organizado por la Asociación Peñasagra. Fomentando el deporte, el respeto por la naturaleza y la solidaridad en el Valle del Nansa.", 
+                        color="#94A3B8",
+                        font_size="16px"
+                    ),
                     align_items="start",
                     width="300px",
                 ),

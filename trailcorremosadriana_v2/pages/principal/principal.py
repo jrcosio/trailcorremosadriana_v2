@@ -61,6 +61,13 @@ def index() -> rx.Component:
                             font_weight="bold",
                             align="center",
                         ),
+                        rx.text(
+                            "Cosío, Rionansa (Cantabria)",
+                            color="orange",
+                            font_size=rx.breakpoints(initial="1em", sm="1.5em", lg="2em"),
+                            font_weight="bold",
+                            align="center",
+                        ),
                         rx.spacer(),
                         align="center",
                     ),

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "reflex-dev": {
+      "source": "silvainfm/claude-skills",
+      "sourceType": "github",
+      "skillPath": "reflex-dev/SKILL.md",
+      "computedHash": "14a9e174e89520608fe87f77f910f0533126fdab6aefe0380cf3c5e12df88831"
+    }
+  }
+}
