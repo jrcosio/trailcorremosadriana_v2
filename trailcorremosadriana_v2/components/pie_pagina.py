@@ -29,7 +29,7 @@ def pie_pagina():
                 rx.spacer(),
                 rx.vstack(
                     rx.text("LEGAL", color="white", font_weight="bold"),
-                    rx.link("Reglamento", href="#", color="#94A3B8"),
+                    rx.link("Reglamento", href="/reglamento", color="#94A3B8"),
                     align_items="start",
                 ),
                 width="100%",

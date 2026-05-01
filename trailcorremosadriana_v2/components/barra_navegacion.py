@@ -12,6 +12,7 @@ def barra_de_navegacion() -> rx.Component:
                     rx.hstack(
                         rx.link("Inicio", href="/", font_size="1.2em", color="white", _hover={"text_decoration": "underline"}),
                         rx.link("Carreras", href="/recorridos", font_size="1.2em", color="white", _hover={"text_decoration": "underline"}),
+                        rx.link("Reglamento", href="/reglamento", font_size="1.2em", color="white", _hover={"text_decoration": "underline"}),
                         rx.link("Galería", href="/galeria", font_size="1.2em", color="white", _hover={"text_decoration": "underline"}),
                         rx.link("Contacto", href="/contacto", font_size="1.2em", color="white", _hover={"text_decoration": "underline"}),
                         spacing="4",
@@ -30,6 +31,11 @@ def barra_de_navegacion() -> rx.Component:
                                 rx.icon("map", color="black"),
                                 rx.box(width="5px"),
                                 rx.link("Carreras", href="/recorridos", font_size="1.2em", color="black"),
+                            ),
+                            rx.menu.item(
+                                rx.icon("scroll-text", color="black"),
+                                rx.box(width="5px"),
+                                rx.link("Reglamento", href="/reglamento", font_size="1.2em", color="black"),
                             ),
                             rx.menu.item(
                                 rx.icon("camera", color="black"),
