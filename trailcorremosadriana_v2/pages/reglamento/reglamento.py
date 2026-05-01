@@ -76,6 +76,7 @@ def _tarjeta_modalidad(
     desnivel: str,
     precio: str,
     nota_precio: str,
+    enlace: str,
     color: str,
     datos: list[str],
 ) -> rx.Component:
@@ -121,14 +122,14 @@ def _tarjeta_modalidad(
                     spacing="1",
                 ),
                 rx.spacer(),
-                rx.link(
+                    rx.link(
                     rx.button(
                         "Inscríbete",
                         color_scheme="orange",
                         border_radius="999px",
                         font_weight="800",
                     ),
-                    href="https://www.gedsports.com/race/trail-sierra-de-penasagra",
+                    href=enlace,
                     is_external=True,
                 ),
                 border_top="1px solid rgba(255,255,255,0.08)",
@@ -164,6 +165,7 @@ def _modalidades() -> rx.Component:
             "+1700m",
             "28€",
             "",
+            "https://www.gedsports.com/inscription/trail-sierra-de-penasagra--27-km",
             "#30a46c",
             ["3 avituallamientos + meta", "Cronometraje GedSPORT", "Salida: 9:00h Plaza Cosío"],
         ),
@@ -174,6 +176,7 @@ def _modalidades() -> rx.Component:
             "+800m",
             "18€",
             "",
+            "https://www.gedsports.com/inscription/trail-sierra-de-penasagra--14-km",
             "orange",
             ["2 avituallamientos + meta", "Cronometraje GedSPORT", "Salida: 9:00h Plaza Cosío"],
         ),
@@ -184,6 +187,7 @@ def _modalidades() -> rx.Component:
             "+250m",
             "12€ / 5€",
             "Niños < 8 años gratis",
+            "https://www.gedsports.com/inscription/trail-sierra-de-penasagra--menores-de-8-anos",
             "#38BDF8",
             ["Avituallamiento en meta", "Para todas las edades", "Participación conjunta"],
         ),
