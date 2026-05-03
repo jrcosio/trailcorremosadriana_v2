@@ -1,74 +1,196 @@
 import reflex as rx
 
 
-
-def card(imagen: str, titulo: str, subtitulo: str, descripcion: str, on_click: callable) -> rx.Component:
-    return rx.card(
-        rx.image(src=imagen, width="100%", border_radius="5px"),
-        rx.heading(titulo, size="5", width="100%", text_align="center", margin_top="3"),
-        rx.text(subtitulo, size="3", width="100%", text_align="center", margin_top="1"),
-        rx.box(height="4px"),
-        rx.button("Inscribirme", color_scheme="green", margin_top="3", width="100%", size="3", border_radius="25px", on_click=on_click),
-        rx.box(height="4px"),
-        rx.text(descripcion, margin_top="1"),
-       
-        padding="4",
-        background_color="#000000",
-        border_radius="md",
-        box_shadow="md"
+def card(
+    imagen: str,
+    etiqueta: str,
+    titulo: str,
+    distancia: str,
+    desnivel: str,
+    precio: str,
+    descripcion: str,
+    enlace: str,
+    color: str,
+) -> rx.Component:
+    return rx.box(
+        rx.box(height="4px", background_color=color, width="100%"),
+        rx.vstack(
+            rx.box(
+                rx.image(
+                    src=imagen,
+                    width="100%",
+                    height="100%",
+                    object_fit="contain",
+                    transition="transform 0.35s ease",
+                ),
+                width="100%",
+                aspect_ratio=rx.breakpoints(initial="3 / 4", sm="4 / 5", md="1 / 1"),
+                background_color="rgba(0,0,0,0.22)",
+                border_radius="14px",
+                overflow="hidden",
+                border="1px solid rgba(255,255,255,0.08)",
+                _group_hover={"img": {"transform": "scale(1.04)"}},
+            ),
+            rx.vstack(
+                rx.text(
+                    etiqueta,
+                    color=color,
+                    font_size="0.72em",
+                    font_weight="900",
+                    letter_spacing="0.16em",
+                    text_transform="uppercase",
+                ),
+                rx.heading(
+                    titulo,
+                    color="white",
+                    font_size=rx.breakpoints(initial="1.55em", lg="1.85em"),
+                    font_weight="900",
+                    line_height="1.05",
+                ),
+                spacing="2",
+                align="start",
+                width="100%",
+            ),
+            rx.hstack(
+                rx.vstack(
+                    rx.hstack(
+                        rx.text(distancia, color="white", font_size="2.8em", font_weight="900", line_height="0.9"),
+                        rx.cond(
+                            distancia.isdigit(),
+                            rx.text("KM", color="#94A3B8", font_size="0.8em", font_weight="900", padding_top="1.35em"),
+                        ),
+                        spacing="1",
+                        align="end",
+                    ),
+                    rx.text(desnivel, color=color, font_size="0.9em", font_weight="900"),
+                    spacing="1",
+                    align="start",
+                ),
+                rx.spacer(),
+                rx.text(precio, color="white", font_size="1.45em", font_weight="900", text_align="right"),
+                width="100%",
+                align="end",
+            ),
+            rx.text(descripcion, color="#CBD5E1", font_size="0.95em", line_height="1.65"),
+            rx.link(
+                rx.button(
+                    "Inscribirme",
+                    width="100%",
+                    border_radius="999px",
+                    font_weight="900",
+                    color="white",
+                    background_color=color,
+                    box_shadow=f"0 12px 30px {color}33",
+                    _hover={"filter": "brightness(1.08)", "transform": "translateY(-1px)"},
+                ),
+                href=enlace,
+                is_external=True,
+                width="100%",
+                text_decoration="none",
+                margin_top="auto",
+            ),
+            spacing="5",
+            align="start",
+            width="100%",
+            height="100%",
+            padding="1.4em",
+        ),
+        role="group",
+        height="100%",
+        background_color="rgba(255,255,255,0.04)",
+        border="1px solid rgba(255,255,255,0.08)",
+        border_radius="18px",
+        overflow="hidden",
+        box_shadow="0 16px 40px rgba(0,0,0,0.22)",
+        transition="all 0.3s ease",
+        _hover={
+            "transform": "translateY(-6px)",
+            "border_color": color,
+            "box_shadow": f"0 18px 45px {color}33",
+        },
     )
 
+
 def inscripciones() -> rx.Component:
-    return rx.center( 
+    return rx.center(
         rx.vstack(
-            rx.text("Inscripciones", font_size="2em", color="orange", font_weight="bold",text_align="center"),
-            rx.divider(border_color="#30a46c", width="100px", margin="0 auto", border_width="2px"),
-            rx.text(
-                "¡Las inscripciones para el Trail Peñasagra ya están abiertas! No pierdas la oportunidad de ser parte de esta increíble experiencia. Inscríbete ahora y asegura tu lugar en la carrera más emocionante del año.",
-                font_size="1.2em",
-                color="#FFFFFF",
-                text_align="center",
+            rx.vstack(
+                rx.text(
+                    "Inscripciones",
+                    font_size=rx.breakpoints(initial="2em", sm="2.5em"),
+                    color="orange",
+                    font_weight="900",
+                    text_align="center",
+                    letter_spacing="0.04em",
+                ),
+                rx.divider(border_color="#30a46c", width="100px", margin="0 auto", border_width="2px"),
+                rx.text(
+                    "Las inscripciones para el Trail Peñasagra ya están abiertas. Elige tu prueba y asegura tu lugar en una jornada de montaña, deporte y solidaridad en Cosío.",
+                    font_size=rx.breakpoints(initial="1em", sm="1.15em"),
+                    color="#CBD5E1",
+                    text_align="center",
+                    line_height="1.7",
+                    max_width="780px",
+                ),
+                spacing="4",
+                align="center",
+                width="100%",
             ),
             rx.grid(
                 card(
                     imagen="/img/trail_inscripciones.webp",
-                    titulo="Trail Peñasagra", 
-                    subtitulo="27 Km",
-                    descripcion="27 Km por los senderos más exigentes de la Sierra. Un reto para los que buscan superarse entre montañas.",
-                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--27-km")
+                    etiqueta="Competición",
+                    titulo="Trail Peñasagra",
+                    distancia="27",
+                    desnivel="+1700m",
+                    precio="28€",
+                    descripcion="27 kilómetros por los senderos más exigentes de la Sierra. Un reto para quienes buscan superarse entre montañas.",
+                    enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--27-km",
+                    color="#30a46c",
                 ),
-                
                 card(
-                    imagen="/img/speed_trail_inscripciones.webp", 
-                    titulo="Speed Trail Peñasagra", 
-                    subtitulo="14 Km",
-                    descripcion="14 Km de ritmo intenso y paisajes inolvidables. La distancia perfecta para disfrutar y competir.", 
-                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--14-km")
+                    imagen="/img/speed_trail_inscripciones.webp",
+                    etiqueta="Competición",
+                    titulo="Speed Trail Peñasagra",
+                    distancia="14",
+                    desnivel="+800m",
+                    precio="18€",
+                    descripcion="14 kilómetros de ritmo intenso, cortafuegos y paisajes inolvidables. La distancia perfecta para disfrutar y competir.",
+                    enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--14-km",
+                    color="#F59E0B",
                 ),
-                
                 card(
-                    imagen="/img/familiar_trail_inscripciones.webp", 
-                    titulo="Familiar Peñasagra", 
-                    subtitulo="7 Km",
-                    descripcion="7 Km para compartir en familia. Una jornada pensada para que pequeños y mayores disfruten juntos de la naturaleza.",
-                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--menores-de-8-anos")
+                    imagen="/img/familiar_trail_inscripciones.webp",
+                    etiqueta="Familiar",
+                    titulo="Familiar Peñasagra",
+                    distancia="7",
+                    desnivel="+250m",
+                    precio="12€ / 5€",
+                    descripcion="7 kilómetros para compartir en familia. Una jornada pensada para que pequeños y mayores disfruten de la naturaleza.",
+                    enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--menores-de-8-anos",
+                    color="#38BDF8",
                 ),
-                                
                 card(
                     imagen="/img/dorsal_solidario.webp",
+                    etiqueta="Solidario",
                     titulo="Dorsal Solidario",
-                    subtitulo="Apoya sin correr",
-                    descripcion="Participa con el Dorsal Solidario, una opción para aquellos que quieran apoyar la causa sin correr. Con tu aportación",
-                    on_click=lambda: rx.redirect("https://www.gedsports.com/inscription/trail-sierra-de-penasagra--dorsal-solidario")
+                    distancia="0",
+                    desnivel="Apoya sin correr",
+                    precio="Libre",
+                    descripcion="Participa con el Dorsal Solidario y apoya la causa aunque no puedas correr. Cada aportación suma.",
+                    enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--dorsal-solidario",
+                    color="#E879F9",
                 ),
-                
                 columns=rx.breakpoints(initial="1", sm="2", lg="4"),
                 spacing="5",
-                width=rx.breakpoints(initial="100%", sm="90%", lg="70%"),
-                padding="20px",
+                width="100%",
+                align_items="stretch",
             ),
             align="center",
-            padding="2em",
+            spacing="7",
+            width="100%",
+            max_width="1200px",
+            padding=rx.breakpoints(initial="3em 1em", sm="4em 2em"),
         ),
         width="100%",
     )
