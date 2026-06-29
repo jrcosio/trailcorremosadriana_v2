@@ -1,6 +1,56 @@
 import reflex as rx
 
 
+def boton_inscripcion(enlace: str, color: str, cerrado: bool) -> rx.Component:
+    boton = rx.button(
+        "Inscribirme",
+        width="100%",
+        border_radius="999px",
+        font_weight="900",
+        color="white",
+        background_color=color,
+        box_shadow=f"0 12px 30px {color}33",
+        _hover={"filter": "brightness(1.08)", "transform": "translateY(-1px)"},
+    )
+
+    if cerrado:
+        return rx.box(
+            rx.alert_dialog.root(
+                rx.alert_dialog.trigger(boton),
+                rx.alert_dialog.content(
+                    rx.alert_dialog.title("Inscripciones cerradas"),
+                    rx.alert_dialog.description(
+                        "Las inscripciones para esta prueba están cerradas.",
+                    ),
+                    rx.flex(
+                        rx.alert_dialog.cancel(
+                            rx.button(
+                                "Entendido",
+                                border_radius="999px",
+                                font_weight="900",
+                                color="white",
+                                background_color=color,
+                            ),
+                        ),
+                        justify="end",
+                        margin_top="1em",
+                    ),
+                ),
+            ),
+            width="100%",
+            margin_top="auto",
+        )
+
+    return rx.link(
+        boton,
+        href=enlace,
+        is_external=True,
+        width="100%",
+        text_decoration="none",
+        margin_top="auto",
+    )
+
+
 def card(
     imagen: str,
     etiqueta: str,
@@ -11,6 +61,7 @@ def card(
     descripcion: str,
     enlace: str,
     color: str,
+    cerrado: bool = False,
 ) -> rx.Component:
     return rx.box(
         rx.box(height="4px", background_color=color, width="100%"),
@@ -72,23 +123,7 @@ def card(
                 align="end",
             ),
             rx.text(descripcion, color="#CBD5E1", font_size="0.95em", line_height="1.65"),
-            rx.link(
-                rx.button(
-                    "Inscribirme",
-                    width="100%",
-                    border_radius="999px",
-                    font_weight="900",
-                    color="white",
-                    background_color=color,
-                    box_shadow=f"0 12px 30px {color}33",
-                    _hover={"filter": "brightness(1.08)", "transform": "translateY(-1px)"},
-                ),
-                href=enlace,
-                is_external=True,
-                width="100%",
-                text_decoration="none",
-                margin_top="auto",
-            ),
+            boton_inscripcion(enlace, color, cerrado),
             spacing="5",
             align="start",
             width="100%",
@@ -147,6 +182,7 @@ def inscripciones() -> rx.Component:
                     descripcion="27 kilómetros por los senderos más exigentes de la Sierra. Un reto para quienes buscan superarse entre montañas.",
                     enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--27-km",
                     color="#30a46c",
+                    cerrado=True,
                 ),
                 card(
                     imagen="/img/speed_trail_inscripciones.webp",
@@ -158,6 +194,7 @@ def inscripciones() -> rx.Component:
                     descripcion="14 kilómetros de ritmo intenso, cortafuegos y paisajes inolvidables. La distancia perfecta para disfrutar y competir.",
                     enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--14-km",
                     color="#F59E0B",
+                    cerrado=True,
                 ),
                 card(
                     imagen="/img/familiar_trail_inscripciones.webp",
@@ -169,6 +206,7 @@ def inscripciones() -> rx.Component:
                     descripcion="7 kilómetros para compartir en familia. Una jornada pensada para que pequeños y mayores disfruten de la naturaleza.",
                     enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--menores-de-8-anos",
                     color="#38BDF8",
+                    cerrado=True,
                 ),
                 card(
                     imagen="/img/dorsal_solidario.webp",
