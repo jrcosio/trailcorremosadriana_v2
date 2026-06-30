@@ -182,7 +182,7 @@ def inscripciones() -> rx.Component:
                     descripcion="27 kilómetros por los senderos más exigentes de la Sierra. Un reto para quienes buscan superarse entre montañas.",
                     enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--27-km",
                     color="#30a46c",
-                    cerrado=True,
+                    cerrado=False,
                 ),
                 card(
                     imagen="/img/speed_trail_inscripciones.webp",
