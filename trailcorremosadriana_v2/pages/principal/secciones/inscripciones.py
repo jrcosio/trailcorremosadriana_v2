@@ -182,7 +182,7 @@ def inscripciones() -> rx.Component:
                     descripcion="27 kilómetros por los senderos más exigentes de la Sierra. Un reto para quienes buscan superarse entre montañas.",
                     enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--27-km",
                     color="#30a46c",
-                    cerrado=False,
+                    cerrado=True,
                 ),
                 card(
                     imagen="/img/speed_trail_inscripciones.webp",
@@ -218,6 +218,7 @@ def inscripciones() -> rx.Component:
                     descripcion="Participa con el Dorsal Solidario y apoya la causa aunque no puedas correr. Cada aportación suma.",
                     enlace="https://www.gedsports.com/inscription/trail-sierra-de-penasagra--dorsal-solidario",
                     color="#E879F9",
+                    cerrado=True,
                 ),
                 columns=rx.breakpoints(initial="1", sm="2", lg="4"),
                 spacing="5",
