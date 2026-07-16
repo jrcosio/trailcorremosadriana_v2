@@ -7,6 +7,7 @@ from trailcorremosadriana_v2.components.pie_pagina import pie_pagina
 ALBUMES = {
     "2024": "https://photos.app.goo.gl/NvoukMiSsSCHmijw9",
     "2025": "https://photos.app.goo.gl/cubEC9ev2Y9N5LAYA",
+    "2026": "https://photos.app.goo.gl/A5ksyLsC3cSc2HHWA",
 
 }
 
