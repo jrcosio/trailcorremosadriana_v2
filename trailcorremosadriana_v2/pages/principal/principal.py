@@ -78,7 +78,7 @@ def index() -> rx.Component:
             # Resto del contenido de la página
             inscripciones(),
             # noticias(),
-            camiseta(),
+            #camiseta(),
             patrocinadores(),
             # voluntarios(),
             # colaboradores(),
