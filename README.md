@@ -89,16 +89,27 @@ trailcorremosadriana_v2/
 │   ├── trailcorremosadriana_v2.py          # Punto de entrada (registro de páginas)
 │   ├── components/                         # Componentes reutilizables
 │   │   ├── barra_navegacion.py             # Barra de navegación sticky
-│   │   └── cabecera.py                     # Cabecera hero con imagen de fondo
+│   │   ├── cabecera.py                     # Cabecera hero con imagen de fondo
+│   │   ├── contador_regresivo.py           # Cuenta atrás hasta el día de la carrera
+│   │   └── pie_pagina.py                   # Pie de página
 │   ├── pages/                              # Páginas de la web
-│   │   ├── principal/
-│   │   │   └── principal.py               # Página de inicio (ruta /)
-│   │   └── galeria/
-│   │       └── galeria.py                 # Galería fotográfica (ruta /galeria) [WIP]
+│   │   ├── principal/                      # Inicio (/) + secciones de la home
+│   │   ├── recorridos/                     # Recorridos y tracks (/recorridos)
+│   │   ├── reglamento/                     # Reglamento oficial (/reglamento)
+│   │   ├── galeria/                        # Galería fotográfica (/galeria)
+│   │   ├── clasificacion/                  # Clasificaciones (/clasificaciones y /clasificaciones/[anio])
+│   │   └── contacto/                       # Formulario de contacto (/contacto)
 │   ├── models/                             # Modelos SQLAlchemy (pendiente)
 │   └── state/                              # Estado global de Reflex (pendiente)
 ├── assets/                                 # Imágenes, fuentes y estáticos
-│   └── cabecera_index.jpg                  # Imagen de fondo de la cabecera principal
+├── datos/                                  # CSVs de clasificaciones por edición (datos/<año>/)
+│   └── 2026/
+│       ├── Clasificacion_27km.csv
+│       ├── Clasificacion_14km.csv
+│       └── Clasificacion_marcha.csv
+├── Dockerfile                              # Build multi-stage para producción
+├── docker-compose.yml                      # Stack app + Caddy
+├── Caddyfile                               # Reverse proxy (trailpeñasagra.com)
 ├── pyproject.toml                          # Dependencias y configuración del proyecto
 ├── uv.lock                                 # Lockfile de uv
 ├── rxconfig.py                             # Configuración de Reflex
@@ -113,28 +124,19 @@ Bloques de UI reutilizables ubicados en `trailcorremosadriana_v2/components/`.
 
 ### `barra_navegacion.py` — `barra_de_navegacion()`
 
-Barra de navegación superior fija que permanece visible durante el scroll.
-
-| Propiedad | Valor |
-|---|---|
-| Posición | `sticky`, `top: 0` |
-| Altura | `7vh` |
-| Fondo | verde |
-| Z-index | `100` (siempre por encima del contenido) |
+Barra de navegación superior fija que permanece visible durante el scroll (70px, fondo gris pizarra `#434c53` con borde inferior naranja). Enlaces de escritorio y menú hamburguesa en móvil.
 
 ### `cabecera.py` — `cabecera(imagen, *children)`
 
-Componente de cabecera tipo *hero* que ocupa el 93% restante de la pantalla. Recibe una imagen de fondo y componentes hijos superpuestos sobre ella.
+Componente de cabecera tipo *hero* a pantalla completa (`100dvh`). Recibe una imagen de fondo y componentes hijos superpuestos sobre ella.
 
-| Parámetro | Descripción |
-|---|---|
-| `imagen` | Ruta a la imagen de fondo (ej. `"/cabecera_index.jpg"`) |
-| `*children` | Contenido superpuesto (titulares, botones, etc.) |
+### `contador_regresivo.py`
 
-| Propiedad | Valor |
-|---|---|
-| Altura | `93vh` |
-| Imagen | `background-size: cover`, centrada |
+Cuenta atrás en vivo hasta el día de la carrera (11 de julio de 2026), usada en la página de inicio.
+
+### `pie_pagina.py` — `pie_pagina()`
+
+Pie de página con enlaces, sección legal y email de contacto.
 
 ---
 
@@ -142,20 +144,19 @@ Componente de cabecera tipo *hero* que ocupa el 93% restante de la pantalla. Rec
 
 Páginas de la web en `trailcorremosadriana_v2/pages/`, cada una en su propio subdirectorio.
 
-### `pages/principal/principal.py` — `index()`
+| Ruta | Página | Descripción |
+|---|---|---|
+| `/` | `principal/principal.py` | Inicio: hero con cuenta atrás, inscripciones, camiseta y patrocinadores |
+| `/recorridos` | `recorridos/recorridos.py` | Selector de las 3 pruebas con ficha técnica, avituallamientos, material y track de Wikiloc |
+| `/reglamento` | `reglamento/reglamento.py` | Reglamento oficial: precios, logística y normas |
+| `/galeria` | `galeria/galeria.py` | Álbumes de fotos por edición (Google Fotos) |
+| `/clasificaciones` | `clasificacion/clasificaciones.py` | Índice de clasificaciones: una tarjeta por edición |
+| `/clasificaciones/[anio]` | `clasificacion/clasificacion.py` | Resultados de una edición: selector de prueba, filtro general/masculino/femenino, buscador por nombre y podium destacado |
+| `/contacto` | `contacto/contacto.py` | Formulario de contacto (envío por email) |
 
-**Ruta:** `/`
+### Clasificaciones automáticas por edición
 
-Página de inicio del sitio. Estructura:
-
-1. `barra_de_navegacion()` — barra sticky en la parte superior.
-2. `cabecera()` — hero a pantalla completa con la imagen `cabecera_index.jpg` y el título **"Trail Peñasagra"** / subtítulo **"Corremos por Adriana"** superpuestos.
-
-### `pages/galeria/galeria.py`
-
-**Ruta:** `/galeria` *(en desarrollo — asignado a Pablo)*
-
-Página destinada a mostrar la galería fotográfica del evento. Pendiente de implementación.
+Los resultados se leen de `datos/<año>/` en cada carga de página. Para publicar una edición nueva basta con crear la carpeta del año con los tres CSVs (`Clasificacion_27km.csv`, `Clasificacion_14km.csv`, `Clasificacion_marcha.csv`) — no hay que tocar código. Si falta un CSV, esa prueba simplemente no se muestra.
 
 ---
 

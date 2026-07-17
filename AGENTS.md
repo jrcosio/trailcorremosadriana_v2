@@ -19,3 +19,5 @@
 - La cuenta atrás está fijada al 11 de julio de 2026 en `components/contador_regresivo.py`; la home usa `_countdown_script()` y `_time_unit()` directamente.
 - El formulario de contacto envía email desde `pages/contacto/contacto_state.py` y necesita `SENDER_EMAIL`, `SENDER_PASSWORD` y `RECEIVER_EMAIL` en el entorno.
 - En Docker, producción ejecuta `uv run reflex run --env prod --backend-host 0.0.0.0`; Caddy proxyfía `/_event/*`, `/_upload/*` y `/ping` al backend `8000`, y el resto al frontend `3000`.
+- Las clasificaciones (`/clasificaciones` y la ruta dinámica `/clasificaciones/[anio]`) leen los CSVs de `datos/<año>/` (`Clasificacion_27km.csv`, `Clasificacion_14km.csv`, `Clasificacion_marcha.csv`) en el backend vía `on_load`; para publicar una edición nueva basta con crear la carpeta `datos/<año>/` con los CSVs, sin tocar código.
+- No declares una var `anio` en ningún state: la genera Reflex automáticamente por la ruta dinámica (si la declaras, lanza `DynamicRouteArgShadowsStateVarError` al arrancar).

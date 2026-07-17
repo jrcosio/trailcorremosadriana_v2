@@ -46,13 +46,14 @@ Reflex apps use a **component/state/page** pattern where Python functions return
 
 ### Pages
 
-Five routes are registered in [trailcorremosadriana_v2.py](trailcorremosadriana_v2/trailcorremosadriana_v2.py) (`/`, `/contacto`, `/recorridos`, `/galeria`, `/reglamento`):
+Seven routes are registered in [trailcorremosadriana_v2.py](trailcorremosadriana_v2/trailcorremosadriana_v2.py) (`/`, `/contacto`, `/recorridos`, `/galeria`, `/reglamento`, `/clasificaciones`, `/clasificaciones/[anio]`):
 
 - [pages/principal/principal.py](trailcorremosadriana_v2/pages/principal/principal.py) — Home (`/`). Composes the hero + countdown with sections from [pages/principal/secciones/](trailcorremosadriana_v2/pages/principal/secciones/): `inscripciones`, `camiseta`, `patrocinadores` are active; `noticias`, `voluntarios`, `colaboradores` are scaffolded but commented out.
 - [pages/contacto/contacto.py](trailcorremosadriana_v2/pages/contacto/contacto.py) — Contact form (`/contacto`), backed by [contacto_state.py](trailcorremosadriana_v2/pages/contacto/contacto_state.py). Sends mail via `smtplib` (Gmail SMTP over SSL, port 465); credentials from env vars `SENDER_EMAIL`, `SENDER_PASSWORD`, `RECEIVER_EMAIL` loaded via `python-dotenv`.
 - [pages/recorridos/recorridos.py](trailcorremosadriana_v2/pages/recorridos/recorridos.py) — Race routes page (`/recorridos`). Backed by `RecorridosState` (var `recorrido` ∈ `"27"`/`"14"`/`"7"`, handler `seleccionar_recorrido`). A 3-distance selector toggles per-distance spec / refreshment (avituallamientos) / mandatory-equipment cards, an embedded Wikiloc map iframe, and a GPX download link.
 - [pages/galeria/galeria.py](trailcorremosadriana_v2/pages/galeria/galeria.py) — Gallery (`/galeria`). Grid of album cards built from the `ALBUMES` dict (year → Google Photos URL), newest first.
 - [pages/reglamento/reglamento.py](trailcorremosadriana_v2/pages/reglamento/reglamento.py) — Official regulations (`/reglamento`). Pricing cards per distance, a logistics/equipment info section, and an accordion of rules (environment & safety, responsibility & insurance, penalties, image rights).
+- [pages/clasificacion/](trailcorremosadriana_v2/pages/clasificacion/) — Race results. `clasificaciones.py` (`/clasificaciones`) shows one card per edition; `clasificacion.py` (`/clasificaciones/[anio]`, dynamic route) shows the results table with a 3-race selector, a General/Masculino/Femenino filter (positions switch to the `Pos Genero` CSV column), a live accent-insensitive name search, and podium highlighting (medals for 1-3, subtle tint for 4-5). Both states live in `clasificacion_state.py`, whose `on_load` handlers scan `datos/` at runtime — dropping CSVs into a new `datos/<year>/` folder publishes that edition with no code changes. **Do not declare an `anio` var in any state**: Reflex auto-generates it from the dynamic route (`DynamicRouteArgShadowsStateVarError` otherwise).
 
 ### Components
 
@@ -71,6 +72,10 @@ Reusable UI in [trailcorremosadriana_v2/components/](trailcorremosadriana_v2/com
 ### Assets
 
 Static assets live in [assets/](assets/) and are served at the root URL path by Reflex.
+
+### Data
+
+Classification CSVs live in [datos/](datos/) as `datos/<year>/Clasificacion_{27km,14km,marcha}.csv` (header: `Pos,Dorsal,Nombre,Apellidos,Categoria,Pos Categoria,Genero,Pos Genero,Club,Meta,Estado`, UTF-8 with BOM → read with `encoding="utf-8-sig"`). They are not under `assets/`: the backend reads them in state event handlers. A missing CSV in a year folder simply hides that race's tab; in the marcha file `Categoria` is empty and its column is hidden.
 
 ### Generated Code
 
