@@ -126,6 +126,16 @@ def _mensaje_gracias() -> rx.Component:
     )
 
 
+def _etiqueta(texto: str) -> rx.Component:
+    return rx.text(
+        texto,
+        color="#CBD5E1",
+        font_size="0.85em",
+        font_weight="700",
+        width="100%",
+    )
+
+
 def _formulario_contacto() -> rx.Component:
     """Columna derecha: formulario de contacto."""
     input_style = {
@@ -162,24 +172,45 @@ def _formulario_contacto() -> rx.Component:
             ),
         ),
         rx.vstack(
-            rx.input(placeholder="Tu nombre", 
-                    value=ContactoState.name, 
+            _etiqueta("Nombre *"),
+            rx.input(placeholder="Tu nombre",
+                    value=ContactoState.name,
                     on_change=ContactoState.set_name,
+                    aria_label="Nombre",
                     **input_style
             ),
-            rx.input(placeholder="Tu email", 
-                     type="email", 
-                    value=ContactoState.email, 
-                    on_change=ContactoState.set_email, 
+            _etiqueta("Email *"),
+            rx.input(placeholder="Tu email",
+                     type="email",
+                    value=ContactoState.email,
+                    on_change=ContactoState.set_email,
+                    aria_label="Email",
                      **input_style
             ),
-            rx.input(placeholder="Asunto", 
-                    value=ContactoState.subject, 
-                    on_change=ContactoState.set_subject, 
+            _etiqueta("Asunto"),
+            rx.input(placeholder="Asunto",
+                    value=ContactoState.subject,
+                    on_change=ContactoState.set_subject,
+                    aria_label="Asunto",
                      **input_style
             ),
+            # Honeypot antispam: invisible para personas, los bots lo rellenan.
+            rx.input(
+                value=ContactoState.website,
+                on_change=ContactoState.set_website,
+                name="website",
+                tab_index=-1,
+                auto_complete=False,
+                aria_hidden="true",
+                position="absolute",
+                left="-9999px",
+                height="1px",
+                width="1px",
+            ),
+            _etiqueta("Mensaje *"),
             rx.text_area(
                 placeholder="Escribe tu mensaje aquí...",
+                aria_label="Mensaje",
                 value=ContactoState.description,
                 on_change=ContactoState.set_description,
                 rows="6",

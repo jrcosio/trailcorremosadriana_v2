@@ -1,8 +1,9 @@
 import reflex as rx
 from trailcorremosadriana_v2.components.barra_navegacion import barra_de_navegacion
 from trailcorremosadriana_v2.components.cabecera import cabecera
-from trailcorremosadriana_v2.components.contador_regresivo import _countdown_script, _time_unit
+from trailcorremosadriana_v2.components.contador_regresivo import contador_hero
 from trailcorremosadriana_v2.components.pie_pagina import pie_pagina
+from trailcorremosadriana_v2.components.revelar import efecto_revelar
 from trailcorremosadriana_v2.pages.principal.secciones.camiseta import camiseta
 from trailcorremosadriana_v2.pages.principal.secciones.colaboradores import colaboradores
 from trailcorremosadriana_v2.pages.principal.secciones.inscripciones import inscripciones
@@ -14,7 +15,7 @@ from trailcorremosadriana_v2.pages.principal.secciones.voluntarios import volunt
 
 def index() -> rx.Component:
     return rx.box(
-        _countdown_script(),
+        efecto_revelar(),
         barra_de_navegacion(),
         rx.vstack(
             cabecera(
@@ -32,42 +33,7 @@ def index() -> rx.Component:
                         ),
                         rx.image(src="/logos/corremos_por_adriana.webp", height=rx.breakpoints(initial="60px", sm="90px", lg="120px")),
                        
-                        rx.box(
-                            rx.text(
-                                "Ya solo faltan",
-                                font_size=rx.breakpoints(initial="1.5em", sm="2em", lg="2.5em"),
-                                color="orange",
-                                align="center",
-                            ),
-                            # _countdown_script(),
-                            rx.hstack(
-                                _time_unit("cd-days", "Días"),
-                                _time_unit("cd-hours", "Horas"),
-                                _time_unit("cd-minutes", "Min"),
-                                _time_unit("cd-seconds", "Seg"),
-                                justify="center",
-                                align="end",
-                                spacing="3",
-                            ),
-                            background_color="#3333339D",
-                            border_radius="1em",
-                            border="2px solid orange",
-                            padding="1.5em",
-                        ),
-                        rx.text(
-                            "Sábado, 11 de Julio de 2026",
-                            color="orange",
-                            font_size=rx.breakpoints(initial="1.5em", sm="2em", lg="2.5em"),
-                            font_weight="bold",
-                            align="center",
-                        ),
-                        rx.text(
-                            "Cosío, Rionansa (Cantabria)",
-                            color="orange",
-                            font_size=rx.breakpoints(initial="1em", sm="1.5em", lg="2em"),
-                            font_weight="bold",
-                            align="center",
-                        ),
+                        contador_hero(),
                         rx.spacer(),
                         align="center",
                     ),
@@ -77,7 +43,7 @@ def index() -> rx.Component:
             ),
             # Resto del contenido de la página
             inscripciones(),
-            # noticias(),
+            noticias(),
             #camiseta(),
             patrocinadores(),
             # voluntarios(),

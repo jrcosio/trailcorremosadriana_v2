@@ -42,13 +42,13 @@ Reflex apps use a **component/state/page** pattern where Python functions return
 ### Key Files
 
 - [rxconfig.py](rxconfig.py) — Reflex config: app name, `show_built_with_reflex=False`, plugins (`SitemapPlugin`, `TailwindV4Plugin`)
-- [trailcorremosadriana_v2/trailcorremosadriana_v2.py](trailcorremosadriana_v2/trailcorremosadriana_v2.py) — App entry point: creates the `app` instance with `theme=rx.theme(appearance="light")` and registers the five pages via `app.add_page(...)`.
+- [trailcorremosadriana_v2/trailcorremosadriana_v2.py](trailcorremosadriana_v2/trailcorremosadriana_v2.py) — App entry point: creates the `app` instance with `theme=rx.theme(appearance="light")` and registers the pages via `app.add_page(...)`, each with `title`, `description`, `image` (absolute OG URL) and `_meta_og(...)` Open Graph/Twitter metas.
 
 ### Pages
 
 Seven routes are registered in [trailcorremosadriana_v2.py](trailcorremosadriana_v2/trailcorremosadriana_v2.py) (`/`, `/contacto`, `/recorridos`, `/galeria`, `/reglamento`, `/clasificaciones`, `/clasificaciones/[anio]`):
 
-- [pages/principal/principal.py](trailcorremosadriana_v2/pages/principal/principal.py) — Home (`/`). Composes the hero + countdown with sections from [pages/principal/secciones/](trailcorremosadriana_v2/pages/principal/secciones/): `inscripciones`, `camiseta`, `patrocinadores` are active; `noticias`, `voluntarios`, `colaboradores` are scaffolded but commented out.
+- [pages/principal/principal.py](trailcorremosadriana_v2/pages/principal/principal.py) — Home (`/`). Composes the hero + `contador_hero()` with sections from [pages/principal/secciones/](trailcorremosadriana_v2/pages/principal/secciones/): `inscripciones`, `noticias`, `patrocinadores` are active; `camiseta`, `voluntarios`, `colaboradores` are scaffolded but commented out. News: `noticias_state.py`'s `on_load` scans `datos/noticias/*.txt` (JSON content: `titulo`, `subtitulo`, `imagen`, `texto`, optional `fecha`) and shows only the 4 newest (order = `fecha` field, else `YYYY-MM-DD-` filename prefix); images referenced by bare filename live in `assets/noticias/img/`; invalid JSON is skipped, missing image → placeholder icon, empty folder hides the whole section. See [datos/noticias/README.md](datos/noticias/README.md).
 - [pages/contacto/contacto.py](trailcorremosadriana_v2/pages/contacto/contacto.py) — Contact form (`/contacto`), backed by [contacto_state.py](trailcorremosadriana_v2/pages/contacto/contacto_state.py). Sends mail via `smtplib` (Gmail SMTP over SSL, port 465); credentials from env vars `SENDER_EMAIL`, `SENDER_PASSWORD`, `RECEIVER_EMAIL` loaded via `python-dotenv`.
 - [pages/recorridos/recorridos.py](trailcorremosadriana_v2/pages/recorridos/recorridos.py) — Race routes page (`/recorridos`). Backed by `RecorridosState` (var `recorrido` ∈ `"27"`/`"14"`/`"7"`, handler `seleccionar_recorrido`). A 3-distance selector toggles per-distance spec / refreshment (avituallamientos) / mandatory-equipment cards, an embedded Wikiloc map iframe, and a GPX download link.
 - [pages/galeria/galeria.py](trailcorremosadriana_v2/pages/galeria/galeria.py) — Gallery (`/galeria`). Grid of album cards built from the `ALBUMES` dict (year → Google Photos URL), newest first.
@@ -61,8 +61,9 @@ Reusable UI in [trailcorremosadriana_v2/components/](trailcorremosadriana_v2/com
 
 - `barra_navegacion.py` — Sticky top nav bar (70px, dark slate `#434c53`). Desktop links + mobile hamburger menu, with a central orange "Inscríbete" CTA.
 - `cabecera.py` — Reusable full-screen hero (100dvh) that takes a background image path plus child content.
-- `contador_regresivo.py` — Live countdown to race date (July 11, 2026). Exposes `_countdown_script()` (injects client-side JS) and `_time_unit(id, label)` helpers, consumed directly by the home page rather than as a single wrapper component.
-- `pie_pagina.py` — Footer with links, legal section, and contact email.
+- `contador_regresivo.py` — Hero countdown box with three client-side phases toggled by JS on ids `cd-fase-{pre,hoy,post}`: countdown before `FECHA_CARRERA`, "¡Hoy es el gran día!" on race day, "¡Próximamente... Trail Peñasagra 2027!" from the day after. Single public export `contador_hero()`; to open the next edition just update `FECHA_CARRERA` (and the year literals).
+- `revelar.py` — `efecto_revelar()`: scroll-reveal (IntersectionObserver + MutationObserver) for elements with `class_name="reveal"`; include once per page, respects `prefers-reduced-motion`.
+- `pie_pagina.py` — Footer with links, legal section, and contact email; columns stack on mobile, copyright year is dynamic.
 
 ### State and Models
 
@@ -76,6 +77,8 @@ Static assets live in [assets/](assets/) and are served at the root URL path by 
 ### Data
 
 Classification CSVs live in [datos/](datos/) as `datos/<year>/Clasificacion_{27km,14km,marcha}.csv` (header: `Pos,Dorsal,Nombre,Apellidos,Categoria,Pos Categoria,Genero,Pos Genero,Club,Meta,Estado`, UTF-8 with BOM → read with `encoding="utf-8-sig"`). They are not under `assets/`: the backend reads them in state event handlers. A missing CSV in a year folder simply hides that race's tab; in the marcha file `Categoria` is empty and its column is hidden.
+
+News live in [datos/noticias/](datos/noticias/) as `YYYY-MM-DD-slug.txt` files with JSON content; their images go in `assets/noticias/img/` (referenced by bare filename). Format and publishing workflow: [datos/noticias/README.md](datos/noticias/README.md).
 
 ### Generated Code
 

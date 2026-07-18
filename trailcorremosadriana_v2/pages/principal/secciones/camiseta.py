@@ -1,9 +1,9 @@
 import reflex as rx
 
-def card(imagen: str, titulo: str, descripcion: str) -> rx.Component:
+def card(imagen: str, titulo: str) -> rx.Component:
     return rx.card(
-        rx.image(src=imagen, border_radius="5px"),
-        rx.heading(titulo, size="5", color="#000000", width="100%", text_align="center", margin_top="3"),
+        rx.image(src=imagen, alt=titulo, loading="lazy", border_radius="5px"),
+        rx.heading(titulo, size="5", color="#FFFFFF", width="100%", text_align="center", margin_top="3"),
         padding="4",
         background_color="#000000",
         border_radius="md",
@@ -13,7 +13,7 @@ def card(imagen: str, titulo: str, descripcion: str) -> rx.Component:
 
 
 def camiseta() -> rx.Component:
-    return rx.center( 
+    return rx.center(
         rx.vstack(
             rx.text("CAMISETA OFICIAL TRAIL PEÑASAGRA 2026", font_size="2em", color="orange", font_weight="bold",text_align="center"),
             rx.divider(border_color="#30a46c", width="100px", margin="0 auto", border_width="2px"),
@@ -26,7 +26,6 @@ def camiseta() -> rx.Component:
             card(
                 imagen="/varios/camiseta.webp",
                 titulo="Camiseta Oficial Trail Peñasagra 2026",
-                descripcion="Disponible en todas las tallas. ¡Consigue la tuya antes de que se agoten!"
             ),
             rx.text(
                 "¡Disponible en todas las tallas! Asegúrate de conseguir la tuya antes de que se agoten (Fecha límite: 25 de junio).",

@@ -122,15 +122,13 @@ def _tarjeta_modalidad(
                     spacing="1",
                 ),
                 rx.spacer(),
-                    rx.link(
-                    rx.button(
-                        "Inscríbete",
-                        color_scheme="orange",
-                        border_radius="999px",
-                        font_weight="800",
-                    ),
-                    href=enlace,
-                    is_external=True,
+                rx.button(
+                    "Inscripciones cerradas",
+                    color_scheme="gray",
+                    variant="soft",
+                    border_radius="999px",
+                    font_weight="800",
+                    disabled=True,
                 ),
                 border_top="1px solid rgba(255,255,255,0.08)",
                 padding_top="1.5em",
@@ -271,7 +269,7 @@ def _informacion() -> rx.Component:
                 _info_item(
                     "id-card",
                     "Inscripciones",
-                    "Abiertas desde el 29 de marzo de 2026. Estrictamente personales e intransferibles.",
+                    "Cerradas: la edición 2026 ya se ha celebrado. Estrictamente personales e intransferibles.",
                 ),
                 _info_item(
                     "clock",

@@ -90,7 +90,8 @@ trailcorremosadriana_v2/
 │   ├── components/                         # Componentes reutilizables
 │   │   ├── barra_navegacion.py             # Barra de navegación sticky
 │   │   ├── cabecera.py                     # Cabecera hero con imagen de fondo
-│   │   ├── contador_regresivo.py           # Cuenta atrás hasta el día de la carrera
+│   │   ├── contador_regresivo.py           # Cuenta atrás / día de carrera / próxima edición
+│   │   ├── revelar.py                      # Animación de aparición al hacer scroll
 │   │   └── pie_pagina.py                   # Pie de página
 │   ├── pages/                              # Páginas de la web
 │   │   ├── principal/                      # Inicio (/) + secciones de la home
@@ -102,11 +103,13 @@ trailcorremosadriana_v2/
 │   ├── models/                             # Modelos SQLAlchemy (pendiente)
 │   └── state/                              # Estado global de Reflex (pendiente)
 ├── assets/                                 # Imágenes, fuentes y estáticos
-├── datos/                                  # CSVs de clasificaciones por edición (datos/<año>/)
-│   └── 2026/
-│       ├── Clasificacion_27km.csv
-│       ├── Clasificacion_14km.csv
-│       └── Clasificacion_marcha.csv
+│   └── noticias/img/                       # Imágenes de las noticias
+├── datos/                                  # Datos que el backend lee en caliente
+│   ├── 2026/                               # CSVs de clasificaciones por edición
+│   │   ├── Clasificacion_27km.csv
+│   │   ├── Clasificacion_14km.csv
+│   │   └── Clasificacion_marcha.csv
+│   └── noticias/                           # Noticias de la home (un .txt JSON por noticia)
 ├── Dockerfile                              # Build multi-stage para producción
 ├── docker-compose.yml                      # Stack app + Caddy
 ├── Caddyfile                               # Reverse proxy (trailpeñasagra.com)
@@ -130,13 +133,17 @@ Barra de navegación superior fija que permanece visible durante el scroll (70px
 
 Componente de cabecera tipo *hero* a pantalla completa (`100dvh`). Recibe una imagen de fondo y componentes hijos superpuestos sobre ella.
 
-### `contador_regresivo.py`
+### `contador_regresivo.py` — `contador_hero()`
 
-Cuenta atrás en vivo hasta el día de la carrera (11 de julio de 2026), usada en la página de inicio.
+Caja del hero con tres fases automáticas según la fecha de la carrera (`FECHA_CARRERA`): cuenta atrás en vivo antes de la prueba, «¡Hoy es el gran día!» durante el día de la carrera y «¡Próximamente... Trail Peñasagra 2027!» a partir del día siguiente. Para abrir la siguiente edición basta con actualizar `FECHA_CARRERA` (y los literales de año).
+
+### `revelar.py` — `efecto_revelar()`
+
+Animación de aparición al hacer scroll para los elementos con `class_name="reveal"` (respeta `prefers-reduced-motion`). Se incluye una vez por página.
 
 ### `pie_pagina.py` — `pie_pagina()`
 
-Pie de página con enlaces, sección legal y email de contacto.
+Pie de página con enlaces, sección legal y email de contacto. Columnas apiladas en móvil y año de copyright dinámico.
 
 ---
 
@@ -146,7 +153,7 @@ Páginas de la web en `trailcorremosadriana_v2/pages/`, cada una en su propio su
 
 | Ruta | Página | Descripción |
 |---|---|---|
-| `/` | `principal/principal.py` | Inicio: hero con cuenta atrás, inscripciones, camiseta y patrocinadores |
+| `/` | `principal/principal.py` | Inicio: hero con cuenta atrás, inscripciones, noticias y patrocinadores |
 | `/recorridos` | `recorridos/recorridos.py` | Selector de las 3 pruebas con ficha técnica, avituallamientos, material y track de Wikiloc |
 | `/reglamento` | `reglamento/reglamento.py` | Reglamento oficial: precios, logística y normas |
 | `/galeria` | `galeria/galeria.py` | Álbumes de fotos por edición (Google Fotos) |
@@ -157,6 +164,10 @@ Páginas de la web en `trailcorremosadriana_v2/pages/`, cada una en su propio su
 ### Clasificaciones automáticas por edición
 
 Los resultados se leen de `datos/<año>/` en cada carga de página. Para publicar una edición nueva basta con crear la carpeta del año con los tres CSVs (`Clasificacion_27km.csv`, `Clasificacion_14km.csv`, `Clasificacion_marcha.csv`) — no hay que tocar código. Si falta un CSV, esa prueba simplemente no se muestra.
+
+### Noticias sin tocar código
+
+La sección de noticias de la home se alimenta de `datos/noticias/`: cada noticia es un fichero `AAAA-MM-DD-titulo.txt` con contenido JSON (`titulo`, `subtitulo`, `imagen`, `texto`, `fecha` opcional). Solo se muestran las **4 más recientes**; la imagen (webp, 1200×750 px, <200 KB) se copia a `assets/noticias/img/` y en el JSON se escribe solo su nombre. Un JSON inválido se ignora, sin imagen sale un icono y con la carpeta vacía la sección desaparece. Formato completo y flujo de publicación en [datos/noticias/README.md](datos/noticias/README.md).
 
 ---
 

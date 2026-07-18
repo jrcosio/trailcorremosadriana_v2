@@ -69,6 +69,8 @@ def card(
             rx.box(
                 rx.image(
                     src=imagen,
+                    alt=titulo,
+                    loading="lazy",
                     width="100%",
                     height="100%",
                     #object_fit="contain",
@@ -131,6 +133,7 @@ def card(
             padding="1.4em",
         ),
         role="group",
+        class_name="reveal",
         height="100%",
         background_color="rgba(255,255,255,0.04)",
         border="1px solid rgba(255,255,255,0.08)",
@@ -160,7 +163,7 @@ def inscripciones() -> rx.Component:
                 ),
                 rx.divider(border_color="#30a46c", width="100px", margin="0 auto", border_width="2px"),
                 rx.text(
-                    "Las inscripciones para el Trail Peñasagra ya están abiertas. Elige tu prueba y asegura tu lugar en una jornada de montaña, deporte y solidaridad en Cosío.",
+                    "La edición 2026 ya se ha celebrado. ¡Gracias a todos los participantes! Las inscripciones para la edición 2027 se anunciarán próximamente.",
                     font_size=rx.breakpoints(initial="1em", sm="1.15em"),
                     color="#CBD5E1",
                     text_align="center",
